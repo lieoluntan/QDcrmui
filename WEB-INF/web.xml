@@ -29,5 +29,14 @@
 		<url-pattern>/aaDepartment</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>aaDitchN</servlet-name>
+		<servlet-class>com.QDcrm.controller.DitchController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>aaDitchN</servlet-name>
+		<url-pattern>/aaDitch</url-pattern>
+	</servlet-mapping>
+
 
 </web-app>
