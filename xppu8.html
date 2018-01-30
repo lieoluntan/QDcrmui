@@ -82,7 +82,7 @@ margin:0px; padding:0;text-align:center;}
 
     <script type="text/javascript">
 
-    var NameOfCookie="rsList";
+    /*var NameOfCookie="rsList";
         var c = document.cookie.indexOf(NameOfCookie+"="); 
         // alert(c);
               if (c != -1)
@@ -93,30 +93,12 @@ margin:0px; padding:0;text-align:center;}
               {
                alert("没有登陆");
                window.location.href="login.html";
-              }
+              }*/
 
 
     $(document).ready(function() {
 
 
-        var NameOfCookie="rsList";
-        var c = document.cookie.indexOf(NameOfCookie+"="); 
-        // alert(c);
-              if (c != -1)
-              {
-                  //判断已经退出登陆
-                  if($.cookie("rsList")==""){
-                      console.log("检测没有权限，重新登录或联系管理员");
-                      window.location.href="login.html";
-                  };
-            console.log("jquery里检测已经登陆");
-            funUser();
-              }
-              else
-              {
-               console.log("jquery里检测没有登陆");
-               window.location.href="login.html";
-              }
 
         //开始判断cookie值
         // var HasData = {};
@@ -128,25 +110,27 @@ margin:0px; padding:0;text-align:center;}
             
 
         // }
+        // 调用主入口
+        funUser();
 
          function funUser(){
 
             //取出cookie用户名ckUserName
-            var ck_uName = $.cookie("ckUserName");
-            console.log("取出用户名"+ck_uName);
-            $(".user-name").html(ck_uName);
+            // var ck_uName = $.cookie("ckUserName");
+            // console.log("取出用户名"+ck_uName);
+            // $(".user-name").html(ck_uName);
                //一级菜单权限开始
-        $( "#menu_1" ).hide();
-        $( "#menu_2" ).hide();
-        $( "#menu_3" ).hide();
-        $( "#menu_4" ).hide();
-        $( "#menu_5" ).hide();
-        $( "#menu_6" ).hide();
-        $( "#menu_7" ).hide();
-        $( "#menu_8" ).hide();
+        // $( "#menu_1" ).hide();
+        // $( "#menu_2" ).hide();
+        // $( "#menu_3" ).hide();
+        // $( "#menu_4" ).hide();
+        // $( "#menu_5" ).hide();
+        // $( "#menu_6" ).hide();
+        // $( "#menu_7" ).hide();
+        // $( "#menu_8" ).hide();
 
         //取cookie里的数组
-        var viewArr = $.cookie("rsList").split(",");
+        /*var viewArr = $.cookie("rsList").split(",");
         for (var i = 0; i < viewArr.length; i++) {
         console.log("第"+i+"个："+viewArr[i]);   
         if(viewArr[i]=="A") {$( "#menu_1" ).show();}  
@@ -157,48 +141,25 @@ margin:0px; padding:0;text-align:center;}
         if(viewArr[i]=="F") {$( "#menu_6" ).show();}
         if(viewArr[i]=="G") {$( "#menu_7" ).show();}
         if(viewArr[i]=="H") {$( "#menu_8" ).show();}                              
-        }//end for
+        }//end for*/
 
         //一级菜单权限结束
 
         //二级权限开始
-        $( "#menu_a1" ).hide();
-        console.log("进入了隐藏二级菜单!");
-        $( "#menu_a2" ).hide();
-             $( "#menu_a3" ).hide();
-             $( "#menu_a4" ).hide();
-             $( "#menu_a5" ).hide();
-        $( "#menu_b1" ).hide();
-        $( "#menu_b2" ).hide();
-             $( "#menu_b3" ).hide();
+        // $( "#menu_a1" ).hide();
+        // console.log("进入了隐藏二级菜单!");
+        // $( "#menu_a2" ).hide();
+        // $( "#menu_a3" ).hide();
+        // $( "#menu_a4" ).hide();
+        // $( "#menu_a5" ).hide();
+        // $( "#menu_b1" ).hide();
+        // $( "#menu_b2" ).hide();
+        // $( "#menu_b3" ).hide();
         
-        $( "#menu_c1" ).hide();
-        $( "#menu_c2" ).hide();
-             $( "#menu_c3" ).hide();
-        $( "#menu_d1" ).hide();
-        $( "#menu_d2" ).hide();
+        
 
-        $( "#menu_e1" ).hide();
-        $( "#menu_e2" ).hide();
 
-        $( "#menu_f1" ).hide();//按老师浏览暂不开放
-        $( "#menu_f2" ).hide();//按学生浏览暂不开放
-        $( "#menu_f3" ).hide();//按教室浏览暂不开放
-        $( "#menu_f4" ).hide();//按日期浏览暂不开放
-        $( "#menu_f5" ).hide();
-             $( "#menu_f6" ).hide();
-
-        $( "#menu_g1" ).hide();
-        $( "#menu_g2" ).hide();
-//             $( "#menu_g3" ).hide();//我的合同 暂不开放
-
-        $( "#menu_h1" ).hide();
-        $( "#menu_h2" ).hide();
-        $( "#menu_h3" ).hide();
-        $( "#menu_h4" ).hide();
-        $( "#menu_h5" ).hide();
-        $( "#menu_h6" ).hide();
-        for (var i = 0; i < viewArr.length; i++) {
+        /*for (var i = 0; i < viewArr.length; i++) {
         // console.log("第"+i+"个："+viewArr[i]);   
         if(viewArr[i]=="Ae") {$( "#menu_a1" ).show();}  //我的今日课，班主任
         if(viewArr[i]=="Ab") {$( "#menu_a2" ).show();} //全校今日课程
@@ -215,32 +176,8 @@ margin:0px; padding:0;text-align:center;}
         if(viewArr[i]=="Cb") {$( "#menu_c2" ).show();}
         if(viewArr[i]=="Cc") {$( "#menu_c3" ).show();}
 
-
-        if(viewArr[i]=="Da") {$( "#menu_d1" ).show();}
-        if(viewArr[i]=="Db") {$( "#menu_d2" ).show();}
-
-        if(viewArr[i]=="Ea") {$( "#menu_e1" ).show();}  
-        if(viewArr[i]=="Eb") {$( "#menu_e2" ).show();}
-
-       if(viewArr[i]=="Fa") {$( "#menu_f1" ).show();}//按老师浏览暂不开放
-        if(viewArr[i]=="Fb") {$( "#menu_f2" ).show();}//按教室浏览暂不开放
-       if(viewArr[i]=="Fc") {$( "#menu_f3" ).show();}//按班级浏览暂不开放
-       //if(viewArr[i]=="Fd") {$( "#menu_f4" ).show();}//按学生浏览暂不开放
-        if(viewArr[i]=="Fe") {$( "#menu_f5" ).show();}
-            if(viewArr[i]=="Ff") {$( "#menu_f6" ).show();}
-
-        if(viewArr[i]=="Ga") {$( "#menu_g1" ).show();}
-        if(viewArr[i]=="Gb") {$( "#menu_g2" ).show();}
-        if(viewArr[i]=="Gc") {$( "#menu_g3" ).show();}//我的合同暂不开放
-
-        if(viewArr[i]=="Ha") {$( "#menu_h1" ).show();}
-        if(viewArr[i]=="Hb") {$( "#menu_h2" ).show();}
-        if(viewArr[i]=="Hc") {$( "#menu_h3" ).show();}
-        if(viewArr[i]=="Hd") {$( "#menu_h4" ).show();}
-        if(viewArr[i]=="He") {$( "#menu_h5" ).show();}
-        if(viewArr[i]=="Hf") {$( "#menu_h6" ).show();}
                               
-        }//end for
+        }//end for*/
         //二级权限结束
 
         //单击一级菜单
@@ -256,26 +193,6 @@ margin:0px; padding:0;text-align:center;}
         document.getElementById("menu_c3").click();
         });//end 7 外圈 单击
 
-        $( "#menu_4" ).click(function() { 
-        document.getElementById("menu_d2").click();
-        });//end 7 外圈 单击
-
-        $( "#menu_5" ).click(function() { 
-        document.getElementById("menu_e2").click();
-        });//end 7 外圈 单击
-
-        $( "#menu_6" ).click(function() { 
-        // document.getElementById("menu_f2").click();
-        document.getElementById("menu_f5").click();
-        });//end 7 外圈 单击
-
-        $( "#menu_7" ).click(function() { 
-        document.getElementById("menu_g3").click();
-        });//end 7 外圈 单击
-
-        $( "#menu_8" ).click(function() { 
-        document.getElementById("menu_h2").click();
-        });//end 7 外圈 单击
 
         //单击二级菜单************************************************************
              $( "#menu_a0" ).click(function(){
@@ -288,213 +205,86 @@ margin:0px; padding:0;text-align:center;}
 
                  document.getElementById('ifr1a1').src="easyui_xpp/1a1.html";
                  // alert("点击了我的今日课程--班主任");
-                 console.log("点击了我的今日课程--班主任");
+                 console.log("点击了新增渠道");
              });
              $( "#menu_a2" ).click(function(){
 
                  document.getElementById('ifr1a2').src="easyui_xpp/1a2.html";
                  // alert("点击了全校今日课程");
-                 console.log("点击了全校今日课程");
+                 console.log("点击了管理渠道");
              });
              $( "#menu_a3" ).click(function(){
 
                  document.getElementById('ifr1a3').src="easyui_xpp/1a3.html";
                  // alert("点击了学生课消统计");
-                 console.log("点击了学生课消统计");
+                 console.log("点击了我的渠道");
              });
-             $( "#menu_a4" ).click(function(){
-
-                 document.getElementById('ifr1a4').src="easyui_xpp/1a4.html";
-                 // alert("点击了老师课消统计");
-                 console.log("点击了老师课消统计");
-             });
-             $( "#menu_a5" ).click(function(){
-
-                 document.getElementById('ifr1a5').src="easyui_xpp/1a5.html";
-                 // alert("点击了我的今日课程--老师");
-                 console.log("点击了我的今日课程--老师");
-             });
-
-           $( "#menu_a6" ).click(function(){
-             document.getElementById('ifr1a6').src="easyui_xpp/1a6.html";
-             // alert("点击了我的月课--老师");
-             console.log("点击了我的月课--老师");
-           });
-           $( "#menu_a7" ).click(function(){
-             document.getElementById('ifr1a7').src="easyui_xpp/1a7.html";
-             // alert("点击了我的月课--班主任");
-             console.log("点击了我的月课--班主任");
-           });
-           $( "#menu_a8" ).click(function(){
-             document.getElementById('ifr1a8').src="easyui_xpp/1a8.html";
-             // alert("点击了合同课消统计");
-             console.log("点击了合同课消统计");
-           });
+             
 
 
              $( "#menu_b1" ).click(function(){
                  document.getElementById('ifr2a1').src="easyui_xpp/2a1.html";
                  // alert("点击了新增学员");
-                 console.log("点击了新增学员");
+                 console.log("点击了新增员工");
              });
         $( "#menu_b2" ).click(function(){
             document.getElementById('ifr2a2').src="easyui_xpp/2a2.html";
             // alert("点击了管理学员");
-            console.log("点击了管理学员");
+            console.log("点击了管理员工");
         });
 
-             $( "#menu_b3" ).click(function(){
-                 document.getElementById('ifr2a3').src="easyui_xpp/2a3.html";
-                 // alert("点击了我的学员");
-                 console.log("点击了我的学员");
-             });
+
 
              $( "#menu_c1" ).click(function(){
                  document.getElementById('ifr3a1').src="easyui_xpp/3a1.html";
                  // alert("点击了新增班级");
-                 console.log("点击了新增班级");
+                 console.log("点击了用户新增");
              });
 
         $( "#menu_c2" ).click(function(){
 
             document.getElementById('ifr3a2').src="easyui_xpp/3a2_ye1.html";
             // alert("点击了管理班级");
-            console.log("点击了管理班级");
+            console.log("点击了用户的管理");
         });
 
              $( "#menu_c3" ).click(function(){
 
                  document.getElementById('ifr3a3').src="easyui_xpp/3a3.html";
                  // alert("点击了管理班级");
-                 console.log("点击了管理班级");
-             });
-
-
-             $( "#menu_d1" ).click(function(){
-                 document.getElementById('ifr4a1').src="easyui_xpp/4a1.html";
-                 // alert("点击了新增员工");
-                 console.log("点击了新增员工");
-             });
-
-        $( "#menu_d2" ).click(function(){
-            document.getElementById('ifr4a2').src="easyui_xpp/4a2.html";
-            // alert("点击了管理员工");
-            console.log("点击了管理员工");
-        });
-
-             $( "#menu_e1" ).click(function(){
-                 document.getElementById('ifr5a1').src="easyui_xpp/5a1.html";
-                 // alert("点击了新增课程");
-                 console.log("点击了新增课程");
-             });
-
-        $( "#menu_e2" ).click(function(){
-            document.getElementById('ifr5a2').src="easyui_xpp/5a2.html";
-            // alert("点击了管理课程");
-            console.log("点击了管理课程");
-        });
-
-        // $( "#menu_f2" ).click(function(){
-        //     document.getElementById('ifr6a2').contentWindow.location.reload();
-        //     // alert("点击了排课关系一");
-        // });
-
-           $( "#menu_f1" ).click(function(){
-             document.getElementById('ifr6a1').src="easyui_xpp/6a1weekteacher.html";
-             // alert("点击了按老师浏览");
-             console.log("点击了按老师浏览");
-           });
-
-           $( "#menu_f2" ).click(function(){
-             document.getElementById('ifr6a2').src="easyui_xpp/6a2weekclr.html";
-             // alert("点击了按老师浏览");
-             console.log("点击了按教室浏览");
-           });
-
-           $( "#menu_f3" ).click(function(){
-             document.getElementById('ifr6a3').src="easyui_xpp/6a3weekcla.html";
-             // alert("点击了按班级浏览");
-             console.log("点击了按班级浏览");
-           });
-
-        $( "#menu_f5" ).click(function(){
-            document.getElementById('ifr6a5').src="easyui_xpp/6a5.html";
-            // alert("点击了排课功能");
-            console.log("点击了排课功能");
-        });
-
-             $( "#menu_f6" ).click(function(){
-                 document.getElementById('ifr6a6').src="easyui_xpp/6a6.html";
-                 // alert("点击了全校周课表");
-                 console.log("点击了全校周课表");
-             });
-
-             $( "#menu_g1" ).click(function(){
-                 document.getElementById('ifr7a1').src="easyui_xpp/7a1.html";
-                 // alert("点击了新增合同");
-                 console.log("点击了新增合同");
-             });
-
-        $( "#menu_g2" ).click(function(){
-            document.getElementById('ifr7a2').src="easyui_xpp/7a2.html";
-            // alert("点击了管理合同");
-            console.log("点击了管理合同");
-        });
-
-             $( "#menu_g3" ).click(function(){
-                 document.getElementById('ifr7a3').src="easyui_xpp/7a3.html";
-                 // alert("点击了我的合同");
-                 console.log("点击了我的合同");
-             });
-
-             $( "#menu_h1" ).click(function(){
-                 document.getElementById('ifr8a1').src="easyui_xpp/8a1.html";
-                 // alert("点击了教室新增");
-                 console.log("点击了教室新增");
-             });
-
-        $( "#menu_h2" ).click(function(){
-            document.getElementById('ifr8a2').src="easyui_xpp/8a2.html";
-            // alert("点击了教室的管理");
-            console.log("点击了教室的管理");
-        });
-
-             $( "#menu_h3" ).click(function(){
-                 document.getElementById('ifr8a3').src="easyui_xpp/8a3.html";
-                 console.log("点击了用户新增");
-             });
-             $( "#menu_h4" ).click(function(){
-                 document.getElementById('ifr8a4').src="easyui_xpp/8a4.html";
-                 // alert("点击了用户的管理");
-                 console.log("点击了用户的管理");
-             });
-             $( "#menu_h5" ).click(function(){
-                 document.getElementById('ifr8a5').src="easyui_xpp/8a5.html";
                  console.log("点击了角色新增");
              });
-             $( "#menu_h6" ).click(function(){
-                 document.getElementById('ifr8a6').src="easyui_xpp/8a6.html";
-                 // alert("点击了角色的管理");
+
+             $( "#menu_c4" ).click(function(){
+
+                 document.getElementById('ifr3a4').src="easyui_xpp/3a4.html";
+                 // alert("点击了管理班级");
                  console.log("点击了角色的管理");
              });
-             $( "#menu_h7" ).click(function(){
-                 document.getElementById('ifr8a7').src="easyui_xpp/8a7.html";
-                 // alert("点击了角色的管理");
-                 console.log("点击了部门的新增");
+
+             $( "#menu_c5" ).click(function(){
+
+                 document.getElementById('ifr3a5').src="easyui_xpp/3a5.html";
+                 // alert("点击了管理班级");
+                 console.log("点击了部门新增");
              });
-             $( "#menu_h8" ).click(function(){
-                 document.getElementById('ifr8a8').src="easyui_xpp/8a8.html";
-                 // alert("点击了角色的管理");
+
+             $( "#menu_c6" ).click(function(){
+
+                 document.getElementById('ifr3a6').src="easyui_xpp/3a6.html";
+                 // alert("点击了管理班级");
                  console.log("点击了部门的管理");
              });
+
+
         //单击二级菜单结束
             };//end 方法 funUser
 
         //登陆调用的funUser方法结束了
         $( "#btnOut" ).click(function(){
-            $.cookie("ckUserEmpUuid","");//删除cookie用null
-            $.cookie("rsList","");//删除cookie用null
-            $.cookie('ckUlog',"");
+            // $.cookie("ckUserEmpUuid","");//删除cookie用null
+            // $.cookie("rsList","");//删除cookie用null
+            // $.cookie('ckUlog',"");
             console.log("退出登陆!!!");
             window.location.href="login.html";
         });
@@ -546,47 +336,17 @@ line-height: 28px;">宋瑛瑛</i>
                 <li>
                     <a id="menu_1" class="selected" href="#one">
                         <img src="icon_xpp/menu_1_main.png">
-                        <i>总览</i>
+                        <i>渠道</i>
                     </a>
                 </li>
                 <li >
                     <a id="menu_2"  href="#two">
-                        <img src="icon_xpp/menu_2_stu.png">
-                        <i>学员</i>
-                    </a>
-                </li>
-                <li>
-                    <a id="menu_3" href="#three">
-                        <img src="icon_xpp/menu_3_cla.png">
-                        <i>班级</i>
-                    </a>
-                </li>
-                <li>
-                    <a id="menu_4" href="#four">
                         <img src="icon_xpp/menu_4_emp.png">
                         <i>员工</i>
                     </a>
                 </li>
                 <li>
-                    <a id="menu_5" href="#five">
-                        <img src="icon_xpp/menu_5_cour.png">
-                        <i>课程</i>
-                    </a>
-                </li>
-                <li>
-                    <a id="menu_6" href="#six">
-                        <img src="icon_xpp/menu_6_putcour.png">
-                        <i>排课</i>
-                    </a>
-                </li>
-                <li>
-                    <a id="menu_7" href="#seven">
-                        <img src="icon_xpp/menu_7_finan.png">
-                        <i>财务</i>
-                    </a>
-                </li>
-                <li>
-                    <a id="menu_8" href="#eight">
+                    <a id="menu_3" href="#three">
                         <img src="icon_xpp/menu_8_set.png">
                         <i>设置</i>
                     </a>
@@ -600,89 +360,35 @@ line-height: 28px;">宋瑛瑛</i>
                     
                     <div id="one" >
                         <ul>
-                        	<li><p style="text-align:center;font-size:24px;line-height:56px;box-sizing:border-box;">校区总览</p></li>
+                        	<li><p style="text-align:center;font-size:24px;line-height:56px;box-sizing:border-box;">渠道</p></li>
                         	<li><a id="menu_a0" href="#one_0" class="selected">欢迎页</a></li>
-                            <li><a id="menu_a1" href="#one_1" >我的今日课-班主任</a></li>
-                            <li><a id="menu_a5" href="#one_5" >我的今日课-老师</a></li>
-                            <li><a id="menu_a7" href="#one_7">我的月课-班主任</a></li>
-                            <li><a id="menu_a6" href="#one_6">我的月课-老师</a></li>
-                            <li><a id="menu_a2" href="#one_2" >全校今日课程</a></li>
-                            <li><a id="menu_a3" href="#one_3">学生课消统计</a></li>
-                            <li><a id="menu_a4" href="#one_4">老师课消统计</a></li>
-                            <li><a id="menu_a8" href="#one_8">合同消耗统计</a></li>
-                            
-                            
+                            <li><a id="menu_a1" href="#one_1" >新增渠道</a></li>
+                            <li><a id="menu_a5" href="#one_2" >管理渠道</a></li>
+                            <li><a id="menu_a7" href="#one_3">我的渠道</a></li>
+            
                         </ul>
                         
                   </div>
                   <div id="two" >
                         <ul>
-                        	<li><p style="text-align:center;font-size:24px;line-height:56px;box-sizing:border-box;">学员</p></li>
-                            <li><a id="menu_b1" href="#two_1">新增学员</a></li>
-                            <li><a id="menu_b2" href="#two_2" >管理学员</a></li>
-                            <li><a id="menu_b3" href="#two_3" >我的学员</a></li>
+                        	<li><p style="text-align:center;font-size:24px;line-height:56px;box-sizing:border-box;">员工</p></li>
+                            <li><a id="menu_b1" href="#two_1">新增员工</a></li>
+                            <li><a id="menu_b2" href="#two_2" >管理员工</a></li>
                         </ul>
                   </div>
                   <div id="three" >
                         <ul>
-                        	<li><p style="text-align:center;font-size:24px;line-height:56px;box-sizing:border-box;">班级</p></li>
-                            <li><a id="menu_c1" href="#three_1">新增班级</a></li>
-                            <li><a id="menu_c2" href="#three_2">管理班级</a></li>
-                            <li><a id="menu_c3" href="#three_3">我的班级</a></li>
-                        </ul>
-
-                  </div>
-                  <div id="four" >
-                        <ul>
-                        	<li><p style="text-align:center;font-size:24px;line-height:56px;box-sizing:border-box;">员工</p></li>
-                            <li><a id="menu_d1" href="#four_1">新增员工</a></li>
-                            <li><a id="menu_d2" href="#four_2">管理员工</a></li>
-                        </ul>
-
-                  </div>
-                  <div id="five" >
-                        <ul>
-                        	<li><p style="text-align:center;font-size:24px;line-height:56px;box-sizing:border-box;">课程</p></li>
-                            <li><a id="menu_e1" href="#five_1">新增课程</a></li>
-                            <li><a id="menu_e2" href="#five_2">管理课程</a></li>
-                        </ul>
-
-                  </div>
-                  <div id="six" >
-                        <ul>
-                        	<li><p style="text-align:center;font-size:24px;line-height:56px;box-sizing:border-box;">排课</p></li>
-                            <li><a id="menu_f1" href="#six_1">按老师浏览</a></li>
-                            <li><a id="menu_f2" href="#six_2">按教室浏览</a></li>
-                            <li><a id="menu_f3" href="#six_3">按班级浏览</a></li>
-                            <li><a id="menu_f4" href="#six_4">按学生浏览</a></li>
-                            <li><a id="menu_f5" href="#six_5">排课功能</a></li>
-                            <li><a id="menu_f6" href="#six_6">全校课表查询</a></li>
-                        </ul>
-
-                  </div>
-                  <div id="seven" >
-                        <ul>
-                        	<li><p style="text-align:center;font-size:24px;line-height:56px;box-sizing:border-box;">财务</p></li>
-                            <li><a id="menu_g1" href="#seven_1">新增合同</a></li>
-                            <li><a id="menu_g2" href="#seven_2">管理合同</a></li>
-                            <li><a id="menu_g3" href="#seven_3">我的合同</a></li>
-                        </ul>
-
-                  </div>
-                  <div id="eight" >
-                        <ul>
                         	<li><p style="text-align:center;font-size:24px;line-height:56px;box-sizing:border-box;">设置</p></li>
-                            <li><a id="menu_h1" href="#eight_1">教室新增</a></li>
-                            <li><a id="menu_h2" href="#eight_2">教室的管理</a></li> 
-                            <li><a id="menu_h3" href="#eight_3">用户新增</a></li> 
-                            <li><a id="menu_h4" href="#eight_4">用户的管理</a></li> 
-                            <li><a id="menu_h5" href="#eight_5">角色新增</a></li> 
-                            <li><a id="menu_h6" href="#eight_6">角色的管理</a></li>
-                            <li><a id="menu_h7" href="#eight_7">部门新增</a></li>
-                            <li><a id="menu_h8" href="#eight_8">部门的管理</a></li>
+                            <li><a id="menu_c1" href="#three_1">用户新增</a></li>
+                            <li><a id="menu_c2" href="#three_2">用户的管理</a></li>
+                            <li><a id="menu_c3" href="#three_3">角色新增</a></li>
+                            <li><a id="menu_c4" href="#three_4">角色的管理</a></li>
+                            <li><a id="menu_c5" href="#three_5">部门新增</a></li>
+                            <li><a id="menu_c6" href="#three_6">部门的管理</a></li>
                         </ul>
 
                   </div>
+                  
                   
 
             </div><!-- end menu_sub子菜单div -->
@@ -701,27 +407,10 @@ line-height: 28px;">宋瑛瑛</i>
                         <div id="one_1">
                            <iframe id="ifr1a1" name="ifrname"   style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;"frameborder="0"></iframe>
                         </div>
-                        <div id="one_5">
-                            <iframe id="ifr1a5"  name="ifrname"   style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;"frameborder="0"></iframe>
-                        </div>
-                    <div id="one_8">
-                        <iframe id="ifr1a8"  name="ifrname"   style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;"frameborder="0"></iframe>
-                    </div>
-                        <div id="one_6">
-                            <iframe id="ifr1a6"  name="ifrname"   style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;"frameborder="0"></iframe>
-                        </div>
-                        <div id="one_7">
-                            <iframe id="ifr1a7"  name="ifrname"   style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;"frameborder="0"></iframe>
-                        </div>
-                        <div id="one_2">
-                           <iframe id="ifr1a2"  name="ifrname"  style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
-                        </div>
-                        <div id="one_3">
-                            <iframe id="ifr1a3"  style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
-                        </div>
-                    <div id="one_4">
-                        <iframe id="ifr1a4"  style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
-                    </div>
+
+
+
+
                         <div id="two_1" >
                             
                             <!-- <p style="text-align:center;font-size:20px;box-sizing:border-box;">内容two_1</p> -->
@@ -743,86 +432,16 @@ line-height: 28px;">宋瑛瑛</i>
                     <div id="three_3" >
                         <iframe id="ifr3a3"  style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
                     </div>
-                        <div id="four_1" >
-                            <iframe id="ifr4a1"  style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
-                        </div>
-                        <div id="four_2" >
-                            <iframe id="ifr4a2"  style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
-                        </div>
 
-                        <div id="five_1" >
-                            <iframe id="ifr5a1"  style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
-                        </div>
-                        <div id="five_2" >
-                            <iframe id="ifr5a2"  style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
-                        </div>
+
+
 
                         <!--开始 six 排课暂时留空 todo -->
-                        <div id="six_1" >
 
-                        <iframe id="ifr6a1"  style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
 
-                            
-                        </div>
-                        <div id="six_2" >
-                        <iframe id="ifr6a2"  style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
-
-                            
-                        </div>
-                        <div id="six_3" >
-                        <iframe id="ifr6a3"  style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
-
-                            
-                        </div>
-
-                        <div id="six_4" >
-                        <iframe id="ifr6a4"  style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
-
-                            
-                        </div>
-
-                        <div id="six_5" >
-                            <iframe id="ifr6a5"  style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
-                        </div>
-                    <div id="six_6" >
-                        <iframe id="ifr6a6"  style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
-                    </div>
                         <!-- 结束 six 排课暂时留空 todo  -->
 
-                        <div id="seven_1" >
-                            <iframe id="ifr7a1"  scrolling="no" style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
-                        </div>
-                        <div id="seven_2" >
-                            <iframe id="ifr7a2"  style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
-                        </div>
-                        <div id="seven_3" >
-                            <iframe id="ifr7a3"  style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
-                        </div>
-
-                        <div id="eight_1" >
-                            <iframe id="ifr8a1"  style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
-                        </div>
-                        <div id="eight_2" >
-                            <iframe id="ifr8a2"  style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
-                        </div>
-                        <div id="eight_3" >
-                            <iframe id="ifr8a3"  style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
-                        </div>
-                        <div id="eight_4" >
-                            <iframe id="ifr8a4"  style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
-                        </div>
-                        <div id="eight_5" >
-                            <iframe id="ifr8a5"   style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
-                        </div>
-                        <div id="eight_6" >
-                            <iframe id="ifr8a6"   style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
-                        </div>
-                        <div id="eight_7" >
-                            <iframe id="ifr8a7"   style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
-                        </div>
-                        <div id="eight_8" >
-                            <iframe id="ifr8a8"   style="box-sizing:border-box;overflow-x: scroll;overflow-y: hidden;min-width:1120px;width:100%;height: 850px;" frameborder="0"></iframe>
-                        </div>
+                        
                 </div>
                 
                 <!-- <div id="content_header" style="background-color:#FFA500;width:1125px;height:73px;float:left;"> 
