@@ -38,5 +38,14 @@
 		<url-pattern>/aaDitch</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>aaRecordN</servlet-name>
+		<servlet-class>com.QDcrm.controller.RecordController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>aaRecordN</servlet-name>
+		<url-pattern>/aaRecord</url-pattern>
+	</servlet-mapping>
+
 
 </web-app>
