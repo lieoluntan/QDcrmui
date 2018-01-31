@@ -47,5 +47,14 @@
 		<url-pattern>/aaRecord</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>aaQuePageRecordN</servlet-name>
+		<servlet-class>com.QDcrm.query.controller.QuePageRecordController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>aaQuePageRecordN</servlet-name>
+		<url-pattern>/aaQuePageRecord</url-pattern>
+	</servlet-mapping>
+
 
 </web-app>
