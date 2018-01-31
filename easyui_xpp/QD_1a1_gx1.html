@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>添加跟进记录</title>
+    
+    <!-- <link rel="stylesheet" type="text/css" href="jquery-easyui-136/themes/gray/easyui.css"/> -->
+   <!--  <link rel="stylesheet" type="text/css" href="jquery-easyui-136/themes/icon.css"/> -->
+    
+    
+    
+    <script type="text/javascript" src="jquery-easyui-136/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery-easyui-136/jquery.easyui.min.js"></script>
+     <script type="text/javascript" src="jquery-easyui-136/locale/easyui-lang-zh_CN.js"></script>
+     <script type="text/javascript" src="../xppjs/jquery.serialize-object.js"></script>
+     <script type="text/javascript" src="../xppjs/jquery.cookie.js"></script>
+     <link rel="stylesheet" type="text/css" href="jquery-easyui-136/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../HMcode_QD/HMcss/1a1_gx1.css">
+   <script>
+        $(document).ready(function(){
+        //验证所有类名yzss输入框
+        function yzV1() {
+            
+            var R = document.getElementById("remarkText").value==''?false:true;
+            var T = $('#recordDate').datetimebox('getValue')==''?false:true;
+            if(!T){
+                alert('请选择跟进日期');
+            }
+            if(!R){
+                alert('请填写备注');
+            }
+            if(R&&T){
+               console.log("有值,可以提交"); 
+               return true;
+            }else{
+               return false;
+            }
+        };
+
+
+        $('#submitForm').click(function(){
+             
+            var flag = yzV1();
+            if(flag){
+                var param = $("#ff").serializeObject();
+                param.ditchUuid = $.cookie('ck_ditchUuid')||'dc8792e9-60f9-4d55-83e8-13c3fb6c06f5';
+                console.log(param);
+                $.ajax({
+                    url: "/QDcrm/aaRecord?qqiu=add",
+                    type: "POST",
+                    data: JSON.stringify(param),
+                    contentType: "application/json;charset=UTF-8",
+                    success: function (result) {
+                        var obj = JSON.parse(result);
+                        console.log(obj);
+                        alert(obj.message);
+                        // obj.message == '新增成功'?window.location.href="5a1_gx2.html":window.location.href="5a1.html";
+                        //调用父级弹窗start
+                        // var $parent = self.parent.$;
+                        // $parent('#menu_e2').click();
+                        //调用父级弹窗end
+                    }
+                }); 
+            }
+        });//end function submitForm
+
+        $('#clearForm').click(function(){
+            $('#ff').form('clear');
+        });//end function clearForm
+
+});
+    </script> 
+</head>
+<body>
+
+<div id="fen_container" class="tab-con">
+    <div id="ye_3_text_container">
+        <div id="header_1">
+            <h2>添加跟进记录</h2>
+        </div>
+        <div id="header_3_form">
+            <form id="ff" method="post">
+                <div id="header_3_tb1" class="tab-style"style="width:100%;">
+
+                    <!-- 第一行 -->
+                    <div style="margin:20px 0 ;">
+                        跟进时间
+                        <input id="recordDate" name="recordDate" class="easyui-datetimebox yzss "required="required">
+                    </div>
+                    <!-- 第一行结束 -->
+                     <div style="margin-bottom:20px 0 ;">
+                         <!-- <input id="remarkText" class="easyui-textbox yzss" data-options="multiline:true" name="remarkText" style="width:100%;height:100px"> -->
+                         <textarea id="remarkText" name="remarkText" class="yzss" placeholder="请输入渠道的跟进记录" style="width:100%;height:100px;color:black;resize: none"></textarea>
+
+                        <!-- <input class="easyui-textbox" multiline="true" value="11111"> -->
+                           
+                     </div>
+                        
+                    
+                </div>
+          
+
+            </form>
+            <!-- 按钮div开始 -->
+            <div class="btn-box" >
+                <a href="javascript:void(0)" class="easyui-linkbutton btn-xk" id="clearForm">清空</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton btn-qr" id="submitForm">确认</a>
+            </div>
+            <!-- 按钮div结束 -->
+        </div><!-- end div  header_3_form-->
+
+    </div><!-- end div  ye_3_text_container-->
+</div><!-- end div  id="fen_container"-->
+
+<!--修改日期输入框样式-->
+<script>
+    $(function(){
+        $('.combo').css({
+            "height":"34px",
+            "width":"200px"
+        });
+        $('.combo .combo-text').css({
+            "height":"34px",
+            "width":"160px"
+        });
+    })
+</script>
+<!-- E--公用弹窗 -->
+</body>
+</html>
