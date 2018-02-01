@@ -56,5 +56,14 @@
 		<url-pattern>/aaQuePageRecord</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>aaMyDitchN</servlet-name>
+		<servlet-class>com.QDcrm.query.controller.MyDitchController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>aaMyDitchN</servlet-name>
+		<url-pattern>/aaMyDitch</url-pattern>
+	</servlet-mapping>
+
 
 </web-app>
