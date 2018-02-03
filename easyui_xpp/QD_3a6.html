@@ -14,7 +14,7 @@
 	<link   rel="stylesheet" type="text/css" href="jquery-easyui-136/themes/gray/easyui.css"/>
 	<link   rel="stylesheet" type="text/css" href="jquery-easyui-136/themes/icon.css"/>
     <link   rel="stylesheet" type="text/css" href="DataTables/datatables.css"/>
-    <link   rel="stylesheet" type="text/css" href="../HMcode/HMcss/8a2.css"/>
+    <link   rel="stylesheet" type="text/css" href="../HMcode_QD/HMcss/QD_3a6.css"/>
 
 
 
@@ -67,7 +67,7 @@
 	<script type="text/javascript">
     $(document).ready(function() {
         //按钮权限开始
-        function funBtn(){
+       /* function funBtn(){
             $( "#delbut" ).hide();
             $( "#opener" ).hide();
 
@@ -77,7 +77,7 @@
                 if(viewArr[i]=="Hb1") {$( "#opener" ).show();}
             }//end for
         }
-        funBtn();
+        funBtn();*/
         /*第零步：把datatables插件的警告窗变成控制台打印*/
         $.fn.dataTable.ext.errMode = 'none';
     //步骤1,展示列表数据
@@ -110,7 +110,7 @@
                     "sSortDescending": ": 以降序排列此列"
                 }
             },//国际化语言结束
-        "ajax": "/sdpk/aaDepartment?qqiu=list",
+        "ajax": "/QDcrm/aaDepartment?qqiu=list",
         "columns": [
             { "data": "name" },
 //            { "data": "campus" },
@@ -151,7 +151,7 @@
 
             $.ajax({
 
-                url:"/sdpk/aaClassRoom?qqiu=on_off",
+                url:"/QDcrm/aaDepartment?qqiu=on_off",
                 type: "POST",
                 //data: JSON.stringify(param),
                 data: JSON.stringify(send_data),
@@ -195,7 +195,7 @@
          //调用ajax方法传给后台接口
          $.ajax({
                 
-                url:"/sdpk/aaClassRoom?qqiu=delete",
+                url:"/QDcrm/aaDepartment?qqiu=delete",
                 type: "POST",
                 //data: JSON.stringify(param),
                 data: JSON.stringify(send_data),
@@ -271,7 +271,7 @@
             console.log(send_edit_data);
             $.ajax({
                 
-                url:"/sdpk/aaDepartment?qqiu=edit",
+                url:"/QDcrm/aaDepartment?qqiu=edit",
                 type: "POST",
                 //data: JSON.stringify(param),
                 data: JSON.stringify(send_edit_data),
