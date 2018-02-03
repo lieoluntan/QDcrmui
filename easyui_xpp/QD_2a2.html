@@ -144,7 +144,7 @@
             table.row( $(this).parents('tr') ).data().openAndclose == 'open'?send_data.openAndclose = 'close':send_data.openAndclose = 'open';
             $.ajax({
 
-                url:"/sdpk/aaEmp?qqiu=on_off",
+                url:"/QDcrm/aaEmp?qqiu=on_off",
                 type: "POST",
                 //data: JSON.stringify(param),
                 data: JSON.stringify(send_data),
