@@ -16,7 +16,7 @@
 	<link   rel="stylesheet" type="text/css" href="jquery-easyui-136/themes/icon.css"/>
     <link   rel="stylesheet" type="text/css" href="DataTables/datatables.css"/>
     <link   rel="stylesheet" type="text/css" href="DataTables/Buttons-1.4.2/css/buttons.dataTables.css"/>
-    <link rel="stylesheet" type="text/css" href="../HMcode/HMcss/4a2.css">
+    <link rel="stylesheet" type="text/css" href="../HMcode_QD/HMcss/2a2.css">
 
 	
 
@@ -98,7 +98,7 @@
             "sSortDescending": ": 以降序排列此列"
         }
     },//国际化语言结束
-        "ajax": "/sdpk/aaEmp?qqiu=list",
+        "ajax": "/QDcrm/aaEmp?qqiu=list",
         "columns": [
             { "data": "name" },
             { "data": "empNum" },
@@ -187,7 +187,7 @@
          //调用ajax方法传给后台接口
          $.ajax({
 				
-				url:"/sdpk/aaEmp?qqiu=delete",
+				url:"/QDcrm/aaEmp?qqiu=delete",
 				type: "POST",
 				//data: JSON.stringify(param),
 				data: JSON.stringify(send_data),
@@ -261,7 +261,7 @@
 
             $.ajax({
                 
-                url:"/sdpk/aaEmp?qqiu=edit",
+                url:"/QDcrm/aaEmp?qqiu=edit",
                 type: "POST",
                 //data: JSON.stringify(param),
                 data: JSON.stringify(send_edit_data),
