@@ -13,7 +13,7 @@
     <link   rel="stylesheet" type="text/css" href="jquery-easyui-136/themes/gray/easyui.css"/>
     <link   rel="stylesheet" type="text/css" href="jquery-easyui-136/themes/icon.css"/>
     <link   rel="stylesheet" type="text/css" href="DataTables/datatables.css"/>
-    <link  rel="stylesheet" type="text/css" href="../HMcode/HMcss/8a4.css"/>
+    <link  rel="stylesheet" type="text/css" href="../HMcode_QD/HMcss/QD_3a1.css"/>
     <script>
         $(document).ready(function(){
             /* 清空事件 */
@@ -21,9 +21,9 @@
                 $(':input').val("");
             });
 
-            //获取课程下拉框数据L4和R3
+            //获取角色下拉框数据L4和R3
             $.ajax({
-                url:"/sdpk/aaRole?qqiu=list",
+                url:"/QDcrm/aaRole?qqiu=list",
                 type: "GET",
                 //data: JSON.stringify(param),
                 contentType: "application/json;charset=UTF-8",
@@ -50,9 +50,9 @@
                 });
 
             }// end huiFuncR4 外圈
-            //获取课程下拉框数据L4和R3
+            //获取公司员工下拉框数据L4和R3
             $.ajax({
-                url:"/sdpk/aaEmp?qqiu=list",
+                url:"/QDcrm/aaEmp?qqiu=list",
                 type: "GET",
                 //data: JSON.stringify(param),
                 ContentType: "application/json;charset=UTF-8",
@@ -108,7 +108,7 @@
                     return false;
                 }
                 $.ajax({
-                    url:"/sdpk/aaUserPK?qqiu=add",
+                    url:"/QDcrm/aaUserPK?qqiu=add",
                     type:"POST",
                     contentType:"application/json;charset=UTF-8",
                     data:JSON.stringify(objSel),
@@ -116,8 +116,8 @@
                         var obj = {};
                         obj = JSON.parse(result);
                       alert(obj.message);
-                        var $parent = self.parent.$;
-                        $parent('#menu_h4').click();
+//                        var $parent = self.parent.$;
+//                        $parent('#menu_h4').click();
                     }
                 });
             });
@@ -147,7 +147,7 @@
             <li><i class="name-s">用户密码</i><input type="text" id="uPassWord" name="uPassWord" class="yzss" placeholder="请输入密码"></li>
             <li class="fir" style="margin-top:20px;">
                 <i class="name-s" style="margin-right: -7px;width: 66px;">角&nbsp;&nbsp;&nbsp;&nbsp;色</i>
-                <input id="roleList" class="easyui-combobox yzss"data-options="editable:false" style="width:200px;height: 34px;" name="roleList">
+                <input id="roleList" class="easyui-combobox yzss" data-options="editable:false" style="width:200px;height: 34px;" name="roleList">
             </li>
             <li  style="margin-top:20px;">
                 <i class="name-s" style="margin-right: -7px;">公司员工</i>
