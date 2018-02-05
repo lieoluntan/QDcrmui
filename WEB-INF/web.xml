@@ -38,5 +38,68 @@
 		<url-pattern>/aaDitch</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>aaRecordN</servlet-name>
+		<servlet-class>com.QDcrm.controller.RecordController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>aaRecordN</servlet-name>
+		<url-pattern>/aaRecord</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>aaQuePageRecordN</servlet-name>
+		<servlet-class>com.QDcrm.query.controller.QuePageRecordController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>aaQuePageRecordN</servlet-name>
+		<url-pattern>/aaQuePageRecord</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>aaMyDitchN</servlet-name>
+		<servlet-class>com.QDcrm.query.controller.MyDitchController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>aaMyDitchN</servlet-name>
+		<url-pattern>/aaMyDitch</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>aaUserPKN</servlet-name>
+		<servlet-class>com.QDcrm.system.controller.UserPKControl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>aaUserPKN</servlet-name>
+		<url-pattern>/aaUserPK</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>aaRoleN</servlet-name>
+		<servlet-class>com.QDcrm.system.controller.RoleController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>aaRoleN</servlet-name>
+		<url-pattern>/aaRole</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>aaRoleResourceN</servlet-name>
+		<servlet-class>com.QDcrm.system.controller.RoleResourceController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>aaRoleResourceN</servlet-name>
+		<url-pattern>/aaRoleResource</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>aaResourceN</servlet-name>
+		<servlet-class>com.QDcrm.system.controller.ResourceController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>aaResourceN</servlet-name>
+		<url-pattern>/aaResource</url-pattern>
+	</servlet-mapping>
+
 
 </web-app>
