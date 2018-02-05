@@ -9,7 +9,18 @@
 		<welcome-file>index.jsp</welcome-file> <welcome-file>default.html</welcome-file> 
 		<welcome-file>default.htm</welcome-file> <welcome-file>default.jsp</welcome-file> 
 		</welcome-file-list> -->
-
+    
+    <!-- log4j日志使用配置  start -->
+    <servlet>
+    <servlet-name>Log4jinit</servlet-name>
+    <servlet-class>com.QDcrm.controller.Log4jinit</servlet-class>
+    <init-param>
+      <param-name>log4j</param-name>
+      <param-value>WEB-INF/classes/log4j.properties</param-value>
+    </init-param>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+   <!-- log4j日志使用配置  end -->
 
 	<servlet>
 		<servlet-name>aaEmpname</servlet-name>
@@ -63,6 +74,42 @@
 	<servlet-mapping>
 		<servlet-name>aaMyDitchN</servlet-name>
 		<url-pattern>/aaMyDitch</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>aaUserPKN</servlet-name>
+		<servlet-class>com.QDcrm.system.controller.UserPKControl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>aaUserPKN</servlet-name>
+		<url-pattern>/aaUserPK</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>aaRoleN</servlet-name>
+		<servlet-class>com.QDcrm.system.controller.RoleController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>aaRoleN</servlet-name>
+		<url-pattern>/aaRole</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>aaRoleResourceN</servlet-name>
+		<servlet-class>com.QDcrm.system.controller.RoleResourceController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>aaRoleResourceN</servlet-name>
+		<url-pattern>/aaRoleResource</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>aaResourceN</servlet-name>
+		<servlet-class>com.QDcrm.system.controller.ResourceController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>aaResourceN</servlet-name>
+		<url-pattern>/aaResource</url-pattern>
 	</servlet-mapping>
 
 
