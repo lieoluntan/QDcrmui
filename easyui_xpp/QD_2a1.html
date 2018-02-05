@@ -13,7 +13,11 @@
 	<link   rel="stylesheet" type="text/css" href="jquery-easyui-136/themes/gray/easyui.css"/>
 	<link   rel="stylesheet" type="text/css" href="jquery-easyui-136/themes/icon.css"/>
 	<link rel="stylesheet" type="text/css" href="../HMcode_QD/HMcss/2a1.css">
-
+	<style>
+		.combobox-item{
+			padding-left: 13px;
+		}
+	</style>
 	<script>
       $.ajax({
 
@@ -63,8 +67,6 @@
 			// m=document.getElementsByTagName("input");
 			m=document.getElementById("workDate");
 			var c1 = $("#workDate").datebox("getValue");
-
-			
 					if(c1==""||c1==null)
 					{
 						alert("请填写日期框"+c1+"的值");
@@ -73,13 +75,25 @@
 			console.log("日期验证，有值！"+c1);
 			return true;
 		}
+//		部门下拉框验证
+	  function yzDepart(){
+	  var sel = $("#depart").combobox("getValue");
+	  console.log(sel);
+	      if(sel==''||sel=='NULL'||sel=='请选择部门'){
+	        alert("请选择部门");
+	        return false;
+		  }
+		  return true;
+	  }
+
 		
 
 		function submitForm(){
 			var f1=yzV1();
 			var f2=yzDate();
+			var f3=yzDepart();
 			var flag = false;
-			if(f1==true&&f2==true){flag = true;}
+			if(f1==true&&f2==true&&f3==true){flag = true;}
 			if (flag) {
 			//$('#ff').form('submit');
 			var param = $("#ff").serializeObject();
