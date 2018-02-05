@@ -50,12 +50,15 @@
         table.dataTable.display tbody tr.even td.sorting_1{
             background-color: white;
         }
+        .combobox-item{
+            padding-left: 13px;
+        }
     </style>
 	<script type="text/javascript">
 
     $(document).ready(function() {
         //按钮权限开始
-        /*function funBtn(){
+        function funBtn(){
             $( "#delbut" ).hide();
             $( "#opener" ).hide();
             var viewArr = $.cookie("rsList").split(",");
@@ -65,7 +68,7 @@
                 if(viewArr[i]=="Db1") {$( "#opener" ).show();}
             }//end for
         }
-        funBtn();*/
+//        funBtn();
         /*第零步：把datatables插件的警告窗变成控制台打印*/
         $.fn.dataTable.ext.errMode = 'none';
         var tabShowText;
@@ -216,7 +219,29 @@
         duration: 1000
       }
     });//end 4 外圈 dialog
+      $.ajax({
 
+        url:"/QDcrm/aaDepartment?qqiu=list",
+        type: "GET",
+        contentType: "application/json;charset=UTF-8",
+        success:function(result){
+          // console.log(result);
+          //步骤1_a1，在步骤1的ajax的回调函数
+          huiFuncR4(result);
+          // alert("下拉框加载完成");
+        }
+
+      });
+      //动态创建下拉框
+      function huiFuncR4(result){
+        var a2dataR4 = JSON.parse(result).data;
+        $('#depart').combobox({
+          data: a2dataR4,
+          valueField: 'name',
+          textField: 'name',
+          selectOnNavigation: false
+        });
+      }
     //步骤5，编辑打开事件
     $( "#opener" ).click(function() {
 
@@ -228,15 +253,16 @@
          document.ffname.name.value= delRowData.name;
          document.ffname.empNum.value= delRowData.empNum;
          document.ffname.phone.value= delRowData.phone;
-         document.ffname.depart.value= delRowData.depart;
          document.ffname.job.value= delRowData.job;
          document.ffname.remark.value= delRowData.remark;
-
          document.ffname.claTeacher.value= delRowData.claTeacher;
          document.ffname.sex.value= delRowData.sex;
          document.ffname.org.value= delRowData.org;
          var workDate = delRowData.workDate;
+         var depart = delRowData.depart;
+         console.log(depart);
          $('#workDate').datebox('setValue', workDate);
+         $('#depart').combobox('setValue', depart);
          document.ffname.fullhalf.value= delRowData.fullhalf;
          document.ffname.jobRemark.value= delRowData.jobRemark;
 
@@ -258,7 +284,7 @@
             send_edit_data = $("#ffname").serializeObject();
             send_edit_data.uuid = delRowData.uuid;
             send_edit_data.workDate = $('#workDate').datebox('getValue');
-
+            send_edit_data.depart = $('#depart').combobox('getValue');
             $.ajax({
                 
                 url:"/QDcrm/aaEmp?qqiu=edit",
@@ -412,13 +438,14 @@
                     <tr>
                     <td  class="name-s" style="padding-left:0">部门</td>
                     <td>
-                        <select  name="depart" class="yzss sel_s">
-                            <option >请选择</option>
-                            <option value="产品部">产品部</option>
-                            <option value="市场部">市场部</option>
-                            <option value="教学部">教学部</option>
-                            <option value="人事行政部">人事行政部</option>
-                        </select>
+                        <!--<select  name="depart" class="yzss sel_s">-->
+                            <!--<option >请选择</option>-->
+                            <!--<option value="产品部">产品部</option>-->
+                            <!--<option value="市场部">市场部</option>-->
+                            <!--<option value="教学部">教学部</option>-->
+                            <!--<option value="人事行政部">人事行政部</option>-->
+                        <!--</select>-->
+                        <input  type="text" name="depart" id="depart" data-options="editable:false" class="easyui-combobox sel_s yzss"style="height:34px;"  comboname="depart">
                     </td>
                     <td class="name-s">职位</td>
                     <td>
@@ -472,7 +499,7 @@
 
                 </form>
                 <!-- 按钮div开始 -->
-                <div class="btn-box" style="margin-right: 16px;">
+                <div class="btn-box" style="margin-right: 18px;">
                     <button  class="easyui-linkbutton btn-xk" id="close">关闭</button>
                     <button  class="easyui-linkbutton btn-qr" id="submitForm">确认</button>
                  </div>
