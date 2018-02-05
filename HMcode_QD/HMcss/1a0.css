@@ -63,7 +63,7 @@ table {
     height:151px;
     position: relative;
     left:50%;
-    margin-top:280px;
+    padding-top:280px;
     margin-left: -79px;
 }
 .center-box p{
