@@ -48,11 +48,7 @@
 			}//end for
 			console.log("合同前两行输入框验证，有值！！");
 			return true;
-			var sel = $('#empUuid').combobox("getValue");
-			if(sel=="请选择渠道负责人" || sel == "" || sel == null){
-			    alert("请选择渠道负责人");
-			    return false;
-			}
+
 		}
 		/*获取负责人下拉框内容*/
 		var sendData = {};
@@ -78,6 +74,11 @@
         }
 		function submitForm(){
 			var f1=yzV1();
+            var sel = $('#empUuid').combobox("getValue");
+            if(sel=="请选择渠道负责人" || sel == "" || sel == null){
+                alert("请选择渠道负责人");
+                return false;
+            }
 			var flag = false;
 			if(f1==true){flag = true;}
 			if (flag) {
