@@ -87,8 +87,8 @@
                 objSel.empUuid = $('#ffList').combobox("getValues")[0];
                 objSel.roleList = $('#roleList').combobox("getValues");
                 console.log(objSel);
-                if(objSel.roleList ==""||objSel.roleList==null){
-                    alert("请选择用户角色");
+                if(objSel.uName ==""||objSel.uName==null){
+                    alert("请输入用户姓名");
                     return false;
                 }
                 if(objSel.uLogUser ==""||objSel.uLogUser==null){
@@ -99,8 +99,8 @@
                     alert("请输入用户密码");
                     return false;
                 }
-                if(objSel.uName ==""||objSel.uName==null){
-                    alert("请输入用户姓名");
+                if(objSel.roleList ==""||objSel.roleList==null){
+                    alert("请选择用户角色");
                     return false;
                 }
                 if(objSel.empUuid ==""||objSel.empUuid==null){
@@ -133,6 +133,12 @@
             $('.combo-arrow').css("height","34px");
         })
     </script>
+    <style>
+        .combo-arrow{
+            background-image:url('../HMcode_QD/HMimages/arrow.jpg');
+            background-color: transparent;
+        }
+    </style>
 </head>
 <body>
 <div class="tab-con">
@@ -147,11 +153,11 @@
             <li><i class="name-s">用户密码</i><input type="text" id="uPassWord" name="uPassWord" class="yzss" placeholder="请输入密码"></li>
             <li class="fir" style="margin-top:20px;">
                 <i class="name-s" style="margin-right: -7px;width: 66px;">角&nbsp;&nbsp;&nbsp;&nbsp;色</i>
-                <input id="roleList" class="easyui-combobox yzss" data-options="editable:false" style="width:200px;height: 34px;" name="roleList">
+                <input id="roleList" class="easyui-combobox yzss" data-options="editable:true" style="width:200px;height: 34px;" name="roleList">
             </li>
             <li  style="margin-top:20px;">
                 <i class="name-s" style="margin-right: -7px;">公司员工</i>
-                <input id="ffList" class="easyui-combobox yzss" data-options="editable:false" style="width:200px;height: 34px;" name="empUuid">
+                <input id="ffList" class="easyui-combobox yzss" data-options="editable:true" style="width:200px;height: 34px;" name="empUuid">
             </li>
 
         </ul>
