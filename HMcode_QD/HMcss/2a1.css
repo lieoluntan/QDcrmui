@@ -73,7 +73,7 @@
 .datebox .combo-arrow{
     padding-top:10px;
 }
-.sel_s{
+.sel_s,.combo-arrow{
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
