@@ -15,7 +15,30 @@
 	<link rel="stylesheet" type="text/css" href="../HMcode_QD/HMcss/2a1.css">
 
 	<script>
-	
+      $.ajax({
+
+        url:"/QDcrm/aaDepartment?qqiu=list",
+        type: "GET",
+        contentType: "application/json;charset=UTF-8",
+        success:function(result){
+          // console.log(result);
+          //步骤1_a1，在步骤1的ajax的回调函数
+          huiFuncR4(result);
+          // alert("下拉框加载完成");
+        }
+
+      });
+	//动态创建下拉框
+       function huiFuncR4(result){
+         var a2dataR4 = JSON.parse(result).data;
+         $('#depart').combobox({
+           data: a2dataR4,
+           valueField: 'name',
+           textField: 'name',
+           selectOnNavigation: false
+         });
+	   }
+
 	//验证所有类名yzss输入框
 	function yzV1(){
 			var m = {};
@@ -61,7 +84,7 @@
 			//$('#ff').form('submit');
 			var param = $("#ff").serializeObject();
 			param.workDate = $('#workDate').datebox('getValue');
-
+		  	param.depart = $('#depart').combobox('getValue');
 			console.log(param);
 			$.ajax({
 				url:"/QDcrm/aaEmp?qqiu=add",
@@ -151,15 +174,16 @@
 	    			<!-- 第三行开始 -->
 
 	    			<tr>
-	    			<td class="name-s" style="padding-left:0;width: 80px;">部&nbsp;&nbsp;&nbsp;&nbsp;门</td>
+	    			<td class="name-s" style="padding-left:0;width: 78px;">部&nbsp;&nbsp;&nbsp;&nbsp;门</td>
 	    			<td>
-		    			<select  name="depart" class="yz-box yzss sel_s">
-							<option >请选择</option>
-							<option value="产品部">产品部</option>
-							<option value="市场部">市场部</option>
-							<option value="教学部">教学部</option>
-							<option value="人事行政部">人事行政部</option>
-						</select>
+		    			<!--<select  name="depart" class="yz-box yzss sel_s">-->
+							<!--<option >请选择</option>-->
+							<!--<option value="产品部">产品部</option>-->
+							<!--<option value="市场部">市场部</option>-->
+							<!--<option value="教学部">教学部</option>-->
+							<!--<option value="人事行政部">人事行政部</option>-->
+						<!--</select>-->
+						<input  type="text" name="depart" id="depart" data-options="editable:true" class="easyui-combobox sel_s yzss"style="height:34px;" placeholder="请选择部门">
 	    			</td>
 	    			<td class="name-s" style="width: 80px;">职&nbsp;&nbsp;&nbsp;&nbsp;位</td>
 	    			<td>
