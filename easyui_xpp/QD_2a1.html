@@ -12,10 +12,33 @@
 	
 	<link   rel="stylesheet" type="text/css" href="jquery-easyui-136/themes/gray/easyui.css"/>
 	<link   rel="stylesheet" type="text/css" href="jquery-easyui-136/themes/icon.css"/>
-	<link rel="stylesheet" type="text/css" href="../HMcode/HMcss/4a1.css">
+	<link rel="stylesheet" type="text/css" href="../HMcode_QD/HMcss/2a1.css">
 
 	<script>
-	
+      $.ajax({
+
+        url:"/QDcrm/aaDepartment?qqiu=list",
+        type: "GET",
+        contentType: "application/json;charset=UTF-8",
+        success:function(result){
+          // console.log(result);
+          //步骤1_a1，在步骤1的ajax的回调函数
+          huiFuncR4(result);
+          // alert("下拉框加载完成");
+        }
+
+      });
+	//动态创建下拉框
+       function huiFuncR4(result){
+         var a2dataR4 = JSON.parse(result).data;
+         $('#depart').combobox({
+           data: a2dataR4,
+           valueField: 'name',
+           textField: 'name',
+           selectOnNavigation: false
+         });
+	   }
+
 	//验证所有类名yzss输入框
 	function yzV1(){
 			var m = {};
@@ -61,22 +84,23 @@
 			//$('#ff').form('submit');
 			var param = $("#ff").serializeObject();
 			param.workDate = $('#workDate').datebox('getValue');
+		  	param.depart = $('#depart').combobox('getValue');
+			console.log(param);
 			$.ajax({
-				
-				url:"/sdpk/aaEmp?qqiu=add",
+				url:"/QDcrm/aaEmp?qqiu=add",
 				type: "POST",
 				//data: JSON.stringify(param),
 				data: JSON.stringify(param),
-				contentType: "application/json;charset=UTF-8", 
+				contentType: "application/json;charset=UTF-8",
 				success:function(result){
                     var obj = JSON.parse(result);
                     alert(obj.message);
 				//调用父级弹窗start
             	var $parent = self.parent.$;
-            	$parent('#menu_d2').click();
+            	$parent('#menu_b2').click();
         		//调用父级弹窗end
 				}
-			 
+
 			});
 			}//end if(flag)
 		}//end function submitForm
@@ -136,7 +160,7 @@
 						</select>
 	    			</td>
 	    			<td class="name-s" style="width: 82px;">入职时间</td>
-	    			<td><input id="workDate" name="workDate" type="text" class="easyui-datebox" required="required"></td>
+	    			<td><input id="workDate" name="workDate" type="text" class="easyui-datebox" required="required"value="请选择入职时间"></td>
 
 	    			<td class="name-s" style="padding-left: 79px;">是否全职</td>
 	    			<td>
@@ -150,15 +174,9 @@
 	    			<!-- 第三行开始 -->
 
 	    			<tr>
-	    			<td class="name-s" style="padding-left:0;width: 80px;">部&nbsp;&nbsp;&nbsp;&nbsp;门</td>
+	    			<td class="name-s" style="padding-left:0;width: 78px;">部&nbsp;&nbsp;&nbsp;&nbsp;门</td>
 	    			<td>
-		    			<select  name="depart" class="yz-box yzss sel_s">
-							<option >请选择</option>
-							<option value="产品部">产品部</option>
-							<option value="市场部">市场部</option>
-							<option value="教学部">教学部</option>
-							<option value="人事行政部">人事行政部</option>
-						</select>
+						<input  type="text" name="depart" id="depart" data-options="editable:false" class="easyui-combobox sel_s yzss"style="height:34px;" value ="请选择部门">
 	    			</td>
 	    			<td class="name-s" style="width: 80px;">职&nbsp;&nbsp;&nbsp;&nbsp;位</td>
 	    			<td>

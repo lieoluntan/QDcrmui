@@ -11,7 +11,7 @@
     <script type="text/javascript" src="../xppjs/jquery.serialize-object.js"></script>
     <link  rel="stylesheet" type="text/css" href="DataTables/datatables.css"/>
     <link  rel="stylesheet" type="text/css" href="jquery-easyui-136/themes/gray/easyui.css"/>
-    <link  rel="stylesheet" type="text/css" href="../HMcode/HMcss/8a6.css"/>
+    <link  rel="stylesheet" type="text/css" href="../HMcode_QD/HMcss/3a4.css"/>
     <style>
         .dataTables_wrapper{
             top:-67px;
@@ -107,7 +107,7 @@
 <script>
     $(document).ready(function(){
         //按钮权限开始
-        function funBtn(){
+        /*function funBtn(){
             $( "#btn-del" ).hide();
             $( "#btn-edi" ).hide();
 
@@ -118,7 +118,7 @@
                 if(viewArr[i]=="Hf1") {$( "#btn-edi" ).show();}
             }//end for
         }
-        funBtn();
+        funBtn();*/
         /*第零步：把datatables插件的警告窗变成控制台打印*/
         $.fn.dataTable.ext.errMode = 'none';
 
@@ -158,7 +158,7 @@
                 }
             },
             ajax:{
-                url:"/sdpk/aaRole?qqiu=list"
+                url:"/QDcrm/aaRole?qqiu=list"
             },
             columns:[
                 {"data":"name"},
@@ -184,7 +184,7 @@
             delData.uuid = delCon;
             /* ajax调用数据接口 */
             $.ajax({
-                url:"/sdpk/aaRole?qqiu=delete",
+                url:"/QDcrm/aaRole?qqiu=delete",
                 type:"POST",
                 data:JSON.stringify(delData),
                 contentType:"application/json;charset=UTF-8",
@@ -254,7 +254,7 @@
             sendTab.rsList = treeCount;
             /* ajax数据的调用 */
             $.ajax({
-                url:"/sdpk/aaRole?qqiu=edit",
+                url:"/QDcrm/aaRole?qqiu=edit",
                 type:"POST",
                 data:JSON.stringify(sendTab),
                 contentType:"application/json;charset=UTF-8",

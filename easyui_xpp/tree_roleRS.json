@@ -1,0 +1,65 @@
+[
+	{
+	"id":"A",
+	"text":"渠道",
+	"children":[{
+		"id":"Aa",
+		"text":"欢迎页",
+		"state":"closed"
+	},{
+		"id":"Ae",
+		"text":"新增渠道"
+	},{
+		"id":"Ab",
+		"text":"管理渠道"
+	},{
+		"id":"Ac",
+		"text":"我的渠道"
+	}]
+	},
+	{
+		"id": "B",
+		"text": "员工",
+		"children": [
+			{
+				"id": "Ba",
+				"text": "新增员工"
+			},
+			{
+				"id": "Bb",
+				"text": "管理员工",
+				"children": [
+					{
+						"id": "Bb1",
+						"text": "编辑"
+					},
+					{
+						"id": "Bb2",
+						"text": "删除",
+						"attributes": {
+							"p1": "Custom Attribute1",
+							"p2": "Custom Attribute2"
+						}
+					}
+				]
+			}
+		]
+	},
+	{
+	"id":"C",
+	"text":"设置",
+	"children":[{
+		"id":"Ca",
+		"text":"用户新增"
+	},{
+		"id": "Cb",
+		"text": "用户的管理"},{
+		"id": "Cc",
+		"text": "角色新增"},{
+		"id": "Cd",
+		"text": "角色的管理"},{
+		"id": "Ce",
+		"text": "部门新增"},{
+		"id": "Cf",
+		"text": "部门的管理"}]}
+	]
