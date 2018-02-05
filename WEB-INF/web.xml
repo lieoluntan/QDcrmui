@@ -111,6 +111,17 @@
 		<servlet-name>aaResourceN</servlet-name>
 		<url-pattern>/aaResource</url-pattern>
 	</servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>aaDengLuN</servlet-name>
+    <servlet-class>com.QDcrm.controller.DengLuControl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>aaDengLuN</servlet-name>
+    <url-pattern>/aaDengLu</url-pattern>
+  </servlet-mapping>
 
 
 </web-app>
