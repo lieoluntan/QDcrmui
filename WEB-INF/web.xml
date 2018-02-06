@@ -122,6 +122,15 @@
     <servlet-name>aaDengLuN</servlet-name>
     <url-pattern>/aaDengLu</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>aaUserPKpassN</servlet-name>
+    <servlet-class>com.QDcrm.system.controller.UserPKpassController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>aaUserPKpassN</servlet-name>
+    <url-pattern>/aaUserPKpass</url-pattern>
+  </servlet-mapping>
 
 
 </web-app>
