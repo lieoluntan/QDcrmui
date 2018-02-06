@@ -205,13 +205,20 @@
 	    			<td class="name-s" style="width: 82px;">入职时间</td>
 	    			<td><input id="workDate" name="workDate" type="text" class="easyui-datebox" required="required"value="请选择入职时间"></td>
 
-	    			<td class="name-s" style="padding-left: 79px;">是否全职</td>
-	    			<td>
+	    			<td class="name-s" style="padding-left: 79px;display:none;">是否全职</td>
+	    			<td style="display:none;">
 		    			<select  name="fullhalf" class="yz-box yzss sel_s">
 							<option value="全职">全职</option>
 							<option value="兼职">兼职</option>
 						</select>
 	    			</td>
+					<td class="name-s"style="padding-left: 79px;">班&nbsp;主&nbsp;任</td>
+					<td>
+						<select  name="claTeacher" class="yz-box yzss sel_s">
+							<option value="true">是</option>
+							<option value="false">否</option>
+						</select>
+					</td>
 	    			</tr>
 	    			<!-- 第二行结束 -->
 	    			<!-- 第三行开始 -->
@@ -230,13 +237,7 @@
 							<!--<option value="任课老师">任课老师</option>-->
 						<!--</select>-->
 	    			</td>
-	    			<td class="name-s">班&nbsp;主&nbsp;任</td>
-	    			<td>
-		    			<select  name="claTeacher" class="yz-box yzss sel_s">
-							<option value="true">是</option>
-							<option value="false">否</option>
-						</select>
-	    			</td>
+
 	    			</tr>
 	    			<!-- 第三行结束 -->
             		</table><!-- end id=header_3_tb1 -->
