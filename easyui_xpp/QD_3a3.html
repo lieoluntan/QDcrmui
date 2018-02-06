@@ -83,9 +83,10 @@
                 return false;
             }
             if(send_data.remark =="" ||send_data.remark ==null ){
-                alert("请输入备注");
-                return false;
+            alert("请输入备注");
+            return false;
             }
+
             var treeNodes = $("#tree").tree('getChecked');//获取已选中的元素
             var treeNode = $("#tree").tree('getChecked','indeterminate');//获取已选中的元素
             var treeCount=[];//存储已选元素的id
@@ -96,6 +97,10 @@
                 treeCount.push(treeNode[i].id);
             }
             send_data.rsList = treeCount;
+              if(send_data.rsList =="" ||send_data.rsList ==null ){
+                alert("请勾选权限");
+                return false;
+              }
             console.log(send_data);
             $.ajax({
                 url:"/QDcrm/aaRole?qqiu=add",
