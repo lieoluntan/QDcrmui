@@ -23,6 +23,17 @@
       var table_ye2,a2data,curD,uuid,reMark,Dat;//全局变量
       var relod = {};
       $(document).ready(function() {
+        //按钮权限开始
+        function funBtn(){
+            $( ".opener" ).hide();
+            $( ".delbut" ).hide();
+            var viewArr = $.cookie("rsList").split(",");
+            for (var i = 0; i < viewArr.length; i++) {
+                if(viewArr[i]=="Ab2a") {$( ".opener" ).show();}
+                if(viewArr[i]=="Ab2b") {$( ".delbut" ).show();}
+            }//end for
+        }
+        funBtn();
           /*第零步：把datatables插件的警告窗变成控制台打印*/
         $.fn.dataTable.ext.errMode = 'none';
 //------------以下部分是修改标题栏信息-start-----------
@@ -135,7 +146,7 @@
           //要初始化一个对象，不然会报undifine未定义错误
           var delRowData = {};
           //获取选择那一行的数据
-          var Auuid = $(this).parent().prevAll()[0].outerText;
+          var Auuid = $(this).parent().prevAll()[0].outerText||$(this).parent().prevAll()[0].textContent;
           //post请求体传给后台的js对象
           var send_data = {};
           send_data.uuid = Auuid;
@@ -171,11 +182,13 @@
     //步骤5，编辑打开事件
     $( "#gzjl_List" ).on("click",".opener",function() {
       var editData = {};
+      console.log($(this).parent().prevAll());
       reMark = $(this).parent().prevAll()[1];
       dat = $(this).parent().prevAll()[2];
-      editData.remark = reMark.outerText;
-      editData.date = dat.outerText;
-      uuid = $(this).parent().prevAll()[0].outerText;
+      editData.remark = reMark.outerText||reMark.textContent;
+      editData.date = dat.outerText||dat.textContent;
+      console.log(editData);
+      uuid = $(this).parent().prevAll()[0].outerText||$(this).parent().prevAll()[0].textContent;
       $("#recordDateEdit").datetimebox('setValue',editData.date);
       $("#remarkTextEdit")[0].value = editData.remark;
       console.log($("#remarkTextEdit")[0].innerHTML);
