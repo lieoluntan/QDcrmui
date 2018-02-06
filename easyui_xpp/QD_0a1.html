@@ -34,8 +34,33 @@
         <![endif]-->
 
         <script type="text/javascript">
-
+          var NameOfCookie="rsList";
+          var c = document.cookie.indexOf(NameOfCookie+"=");
+          if (c != -1)
+          {
+            console.log("第一次js检测已经登陆");
+          }
+          else
+          {
+            alert("没有登陆");
+            window.location.href="../login.html";
+          }
             $(document).ready(function() {
+              var NameOfCookie = "rsList";
+              var c = document.cookie.indexOf(NameOfCookie + "=");
+              // alert(c);
+              if (c != -1) {
+                //判断已经退出登陆
+                if ($.cookie("rsList") == "") {
+                  console.log("检测没有权限，重新登录或联系管理员");
+                  window.location.href = "../login.html";
+                }
+                console.log("jquery里检测已经登陆");
+              }
+              else {
+                console.log("jquery里检测没有登陆");
+                window.location.href = "../login.html";
+              }
                 $('#uLogUser').val($.cookie('ckUlog'));
                 $( "#btn_denlu" ).click(function() {
                     var send_edit_data = {};
@@ -51,8 +76,9 @@
                         return false;
                     }
                     if(document.getElementById("uNewPassWord1").value == document.getElementById("uNewPassWord2").value){
+                     
                         $.ajax({
-                            url:"/sdpk/aaUserPKpass?qqiu=edit",
+                            url:"/QDcrm/aaUserPKpass?qqiu=edit",
                             type: "POST",
                             data: JSON.stringify(send_edit_data),
                             contentType: "application/json;charset=UTF-8",
@@ -183,7 +209,7 @@
 
         <div class="page-container">
             <div class="logo-box">
-                <img src="../HMcode/HMimages/logo-l.png">
+                <img src="../HMcode_QD/HMimages/logo-l.png">
             </div>
                 <input id="uLogUser" name="uLogUser" class="username" value="请输入账号" disabled="disabled">
                 <input type="password" id="uPassWord" name="uPassWord" class="password"  placeholder="请输入密码">

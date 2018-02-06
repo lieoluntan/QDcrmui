@@ -81,85 +81,86 @@ margin:0px; padding:0;text-align:center;}
     </style>
 
     <script type="text/javascript">
-
-    /*var NameOfCookie="rsList";
-        var c = document.cookie.indexOf(NameOfCookie+"="); 
-        // alert(c);
-              if (c != -1)
-              {
-            console.log("第一次js检测已经登陆");
-              }
-              else
-              {
-               alert("没有登陆");
-               window.location.href="login.html";
-              }*/
-
-
+      var NameOfCookie="rsList";
+      var c = document.cookie.indexOf(NameOfCookie+"=");
+      if (c != -1)
+      {
+        console.log("第一次js检测已经登陆");
+      }
+      else
+      {
+        alert("没有登陆");
+        window.location.href="login.html";
+      }
     $(document).ready(function() {
-
-
-
-        //开始判断cookie值
-        // var HasData = {};
-        //  HasData = $.cookie("rsList");
-
-        // if($.cookie("rsList")!=null){
-            
-        // }else if($.cookie("rsList") = null){
-            
-
-        // }
+      var NameOfCookie="rsList";
+      var c = document.cookie.indexOf(NameOfCookie+"=");
+      // alert(c);
+      if (c != -1)
+      {
+        //判断已经退出登陆
+        if($.cookie("rsList")==""){
+          console.log("检测没有权限，重新登录或联系管理员");
+          window.location.href="login.html";
+        };
+        console.log("jquery里检测已经登陆");
+        funUser();
+      }
+      else
+      {
+        console.log("jquery里检测没有登陆");
+        window.location.href="login.html";
+      }
         // 调用主入口
         funUser();
 
          function funUser(){
 
             //取出cookie用户名ckUserName
-            // var ck_uName = $.cookie("ckUserName");
-            // console.log("取出用户名"+ck_uName);
-            // $(".user-name").html(ck_uName);
+             var ck_uName = $.cookie("ckUserName");
+             console.log("取出用户名"+ck_uName);
+             $(".user-name").html(ck_uName);
                //一级菜单权限开始
-        // $( "#menu_1" ).hide();
-        // $( "#menu_2" ).hide();
-        // $( "#menu_3" ).hide();
-        // $( "#menu_4" ).hide();
-        // $( "#menu_5" ).hide();
-        // $( "#menu_6" ).hide();
-        // $( "#menu_7" ).hide();
-        // $( "#menu_8" ).hide();
+         $( "#menu_1" ).hide();
+         $( "#menu_2" ).hide();
+         $( "#menu_3" ).hide();
+         $( "#menu_4" ).hide();
+         $( "#menu_5" ).hide();
+         $( "#menu_6" ).hide();
+         $( "#menu_7" ).hide();
+         $( "#menu_8" ).hide();
 
         //取cookie里的数组
-        /*var viewArr = $.cookie("rsList").split(",");
+        var viewArr = $.cookie("rsList").split(",");
         for (var i = 0; i < viewArr.length; i++) {
-        console.log("第"+i+"个："+viewArr[i]);   
-        if(viewArr[i]=="A") {$( "#menu_1" ).show();}  
+        console.log("第"+i+"个："+viewArr[i]);
+        if(viewArr[i]=="A") {$( "#menu_1" ).show();}
         if(viewArr[i]=="B") {$( "#menu_2" ).show();}
         if(viewArr[i]=="C") {$( "#menu_3" ).show();}
         if(viewArr[i]=="D") {$( "#menu_4" ).show();}
         if(viewArr[i]=="E") {$( "#menu_5" ).show();}
         if(viewArr[i]=="F") {$( "#menu_6" ).show();}
         if(viewArr[i]=="G") {$( "#menu_7" ).show();}
-        if(viewArr[i]=="H") {$( "#menu_8" ).show();}                              
-        }//end for*/
+        if(viewArr[i]=="H") {$( "#menu_8" ).show();}
+        }//end for
 
         //一级菜单权限结束
 
         //二级权限开始
-        // $( "#menu_a1" ).hide();
-        // console.log("进入了隐藏二级菜单!");
-        // $( "#menu_a2" ).hide();
-        // $( "#menu_a3" ).hide();
-        // $( "#menu_a4" ).hide();
-        // $( "#menu_a5" ).hide();
-        // $( "#menu_b1" ).hide();
-        // $( "#menu_b2" ).hide();
-        // $( "#menu_b3" ).hide();
+         $( "#menu_a1" ).hide();
+         console.log("进入了隐藏二级菜单!");
+         $( "#menu_a2" ).hide();
+         $( "#menu_a3" ).hide();
+         $( "#menu_a4" ).hide();
+         $( "#menu_a5" ).hide();
+         $( "#menu_b1" ).hide();
+         $( "#menu_b2" ).hide();
+         $( "#menu_b3" ).hide();
         
         
 
 
-        /*for (var i = 0; i < viewArr.length; i++) {
+        for (var i = 0; i < viewArr.length; i++) {
         // console.log("第"+i+"个："+viewArr[i]);   
         if(viewArr[i]=="Ae") {$( "#menu_a1" ).show();}  //我的今日课，班主任
         if(viewArr[i]=="Ab") {$( "#menu_a2" ).show();} //全校今日课程
@@ -177,7 +178,7 @@ margin:0px; padding:0;text-align:center;}
         if(viewArr[i]=="Cc") {$( "#menu_c3" ).show();}
 
                               
-        }//end for*/
+        }//end for
         //二级权限结束
 
         //单击一级菜单
@@ -282,15 +283,19 @@ margin:0px; padding:0;text-align:center;}
 
         //登陆调用的funUser方法结束了
         $( "#btnOut" ).click(function(){
-            // $.cookie("ckUserEmpUuid","");//删除cookie用null
-            // $.cookie("rsList","");//删除cookie用null
-            // $.cookie('ckUlog',"");
+          console.log($.cookie());
+             $.cookie("ckUserEmpUuid","");//删除cookie用null
+             $.cookie("rsList","");//删除cookie用null
+             $.cookie('ckUlog',"");
+             $.cookie('keyMM',"");
+             $.cookie('ckUserName',"");
             console.log("退出登陆!!!");
+            console.log($.cookie());
             window.location.href="login.html";
         });
 
         $( "#btnPWD" ).click(function(){
-            window.location.href="easyui_xpp/0a1.html";
+            window.location.href="easyui_xpp/QD_0a1.html";
                  // alert("点击了密码设置");
                  console.log("点击了密码设置");
              });

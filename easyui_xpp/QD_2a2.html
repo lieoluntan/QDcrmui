@@ -55,20 +55,46 @@
         }
     </style>
 	<script type="text/javascript">
-
+      var NameOfCookie="rsList";
+      var c = document.cookie.indexOf(NameOfCookie+"=");
+      if (c != -1)
+      {
+        console.log("第一次js检测已经登陆");
+      }
+      else
+      {
+        alert("没有登陆");
+        window.location.href="../login.html";
+      }
     $(document).ready(function() {
+      var NameOfCookie = "rsList";
+      var c = document.cookie.indexOf(NameOfCookie + "=");
+      // alert(c);
+      if (c != -1) {
+        //判断已经退出登陆
+        if ($.cookie("rsList") == "") {
+          console.log("检测没有权限，重新登录或联系管理员");
+          window.location.href = "../login.html";
+        }
+        console.log("jquery里检测已经登陆");
+      }
+      else {
+        console.log("jquery里检测没有登陆");
+        window.location.href = "../login.html";
+      }
         //按钮权限开始
         function funBtn(){
-            $( "#delbut" ).hide();
             $( "#opener" ).hide();
+            $( "#delbut" ).hide();
             var viewArr = $.cookie("rsList").split(",");
             for (var i = 0; i < viewArr.length; i++) {
 //                console.log("第"+i+"个："+viewArr[i]);
-                // if(viewArr[i]=="Db2") {$( "#delbut" ).show();}
-                if(viewArr[i]=="Db1") {$( "#opener" ).show();}
+                 if(viewArr[i]=="Bb1") {$( "#opener" ).show();}
+                 if(viewArr[i]=="Bb2") {$( "#delbut" ).show();}
+                
             }//end for
         }
-//        funBtn();
+        funBtn();
         /*第零步：把datatables插件的警告窗变成控制台打印*/
         $.fn.dataTable.ext.errMode = 'none';
         var tabShowText;

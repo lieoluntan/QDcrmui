@@ -20,9 +20,35 @@
     <!-- 11月09新增start -->
 
     <script type="text/javascript">
+      var NameOfCookie="rsList";
+      var c = document.cookie.indexOf(NameOfCookie+"=");
+      if (c != -1)
+      {
+        console.log("第一次js检测已经登陆");
+      }
+      else
+      {
+        alert("没有登陆");
+        window.location.href="../login.html";
+      }
       var table_ye2,a2data,curD,uuid,reMark,Dat;//全局变量
       var relod = {};
       $(document).ready(function() {
+        var NameOfCookie = "rsList";
+        var c = document.cookie.indexOf(NameOfCookie + "=");
+        // alert(c);
+        if (c != -1) {
+          //判断已经退出登陆
+          if ($.cookie("rsList") == "") {
+            console.log("检测没有权限，重新登录或联系管理员");
+            window.location.href = "../login.html";
+          }
+          console.log("jquery里检测已经登陆");
+        }
+        else {
+          console.log("jquery里检测没有登陆");
+          window.location.href = "../login.html";
+        }
         //按钮权限开始
         function funBtn(){
             $( ".opener" ).hide();

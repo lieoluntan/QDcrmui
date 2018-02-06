@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>用户新增</title>
     <script type="text/javascript" src="jquery-easyui-136/jquery.min.js"></script>
-
+    <script type="text/javascript" src="../xppjs/jquery.cookie.js"></script>
     <script type="text/javascript" src="jquery-easyui-136/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="jquery-easyui-136/locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript" src="../xppjs/jquery.serialize-object.js"></script>
@@ -15,7 +15,33 @@
     <link   rel="stylesheet" type="text/css" href="DataTables/datatables.css"/>
     <link  rel="stylesheet" type="text/css" href="../HMcode_QD/HMcss/QD_3a1.css"/>
     <script>
+      var NameOfCookie="rsList";
+      var c = document.cookie.indexOf(NameOfCookie+"=");
+      if (c != -1)
+      {
+        console.log("第一次js检测已经登陆");
+      }
+      else
+      {
+        alert("没有登陆");
+        window.location.href="../login.html";
+      }
         $(document).ready(function(){
+          var NameOfCookie = "rsList";
+          var c = document.cookie.indexOf(NameOfCookie + "=");
+          // alert(c);
+          if (c != -1) {
+            //判断已经退出登陆
+            if ($.cookie("rsList") == "") {
+              console.log("检测没有权限，重新登录或联系管理员");
+              window.location.href = "../login.html";
+            }
+            console.log("jquery里检测已经登陆");
+          }
+          else {
+            console.log("jquery里检测没有登陆");
+            window.location.href = "../login.html";
+          }
             /* 清空事件 */
             $('#clearAll').click(function(){
                 $(':input').val("");

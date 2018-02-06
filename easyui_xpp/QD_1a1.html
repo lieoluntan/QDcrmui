@@ -31,6 +31,34 @@
 		}
 	</style>
 	<script>
+      var NameOfCookie="rsList";
+      var c = document.cookie.indexOf(NameOfCookie+"=");
+      if (c != -1)
+      {
+        console.log("第一次js检测已经登陆");
+      }
+      else
+      {
+        alert("没有登陆");
+        window.location.href="../login.html";
+      }
+      $(document).ready(function() {
+        var NameOfCookie = "rsList";
+        var c = document.cookie.indexOf(NameOfCookie + "=");
+        // alert(c);
+        if (c != -1) {
+          //判断已经退出登陆
+          if ($.cookie("rsList") == "") {
+            console.log("检测没有权限，重新登录或联系管理员");
+            window.location.href = "../login.html";
+          }
+          console.log("jquery里检测已经登陆");
+        }
+        else {
+          console.log("jquery里检测没有登陆");
+          window.location.href = "../login.html";
+        }
+      })
 		var Conuuid;
 		//验证所有类名yzss输入框
 			function yzV1(){
@@ -166,11 +194,11 @@
             		<table class="tab-style">
             		<!-- 第一行 -->
             		<tr>
-	    			<td class="name-s" style="padding:0;width:55px;">负责人</td>
+	    			<td class="name-s" style="padding:0;width:63px;">负责人</td>
 	    			<td style="margin-left:20px;">
 						<input id="empUuid" name="empUuid" data-options="editable:true" class="easyui-combobox yzss" style="width: 200px; height: 36px; color:#646464; display: none;" value="请选择渠道负责人" comboname="empUuid">
 					</td>
-						<td class="name-s" style="padding-right: 0;padding-left:95px; ">渠道等级</td>
+						<td class="name-s" style="padding-right: 0;padding-left:90px; ">渠道等级</td>
 						<td style="margin-left:20px;">
 							<select  name="rank" class="yz-box yzss sel_s">
 								<option>A</option>
@@ -186,11 +214,11 @@
 	    		<table class="tab-style">
 					<tr>
 						<td class="name-s" style="padding-left:0">来源</td>
-						<td><input  type="text" name="source" class="yzss" style="width:956px;" placeholder="请输入渠道来源"></input></td>
+						<td><input  type="text" name="source" class="yzss" style="width:949px;" placeholder="请输入渠道来源"></input></td>
 					</tr>
             		<tr>
 	    			<td class="name-s" style="padding-left:0">备注</td>
-	    			<td><input  type="text" name="remark" class="yzss" style="width:956px;" value="无"></input></td>
+	    			<td><input  type="text" name="remark" class="yzss" style="width:949px;" value="无"></input></td>
 	    			</tr>
 	    			<!-- 第二行结束 -->
             		</table>

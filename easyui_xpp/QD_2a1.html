@@ -6,6 +6,7 @@
 	
 	<!-- <script type="text/javascript" src="../xppjs/jquery.js"></script> -->
 	<script type="text/javascript" src="jquery-easyui-136/jquery.min.js"></script>
+	<script type="text/javascript" src="../xppjs/jquery.cookie.js"></script>
 	<script type="text/javascript" src="jquery-easyui-136/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="jquery-easyui-136/locale/easyui-lang-zh_CN.js"></script>
 	<script type="text/javascript" src="../xppjs/jquery.serialize-object.js"></script>
@@ -19,6 +20,34 @@
 		}
 	</style>
 	<script>
+      var NameOfCookie="rsList";
+      var c = document.cookie.indexOf(NameOfCookie+"=");
+      if (c != -1)
+      {
+        console.log("第一次js检测已经登陆");
+      }
+      else
+      {
+        alert("没有登陆");
+        window.location.href="../login.html";
+      }
+      $(document).ready(function() {
+        var NameOfCookie = "rsList";
+        var c = document.cookie.indexOf(NameOfCookie + "=");
+        // alert(c);
+        if (c != -1) {
+          //判断已经退出登陆
+          if ($.cookie("rsList") == "") {
+            console.log("检测没有权限，重新登录或联系管理员");
+            window.location.href = "../login.html";
+          }
+          console.log("jquery里检测已经登陆");
+        }
+        else {
+          console.log("jquery里检测没有登陆");
+          window.location.href = "../login.html";
+        }
+      })
       $.ajax({
 
         url:"/QDcrm/aaDepartment?qqiu=list",
@@ -192,7 +221,7 @@
 	    			<td>
 						<input  type="text" name="depart" id="depart" data-options="editable:false" class="easyui-combobox sel_s yzss"style="height:34px;" value ="请选择部门">
 	    			</td>
-	    			<td class="name-s" style="width: 80px;">职&nbsp;&nbsp;&nbsp;&nbsp;位</td>
+	    			<td class="name-s" style="width: 80px;padding-right: 3px;">职&nbsp;&nbsp;&nbsp;位</td>
 	    			<td>
 						<input  type="text" name="job" class="yz-box yzss " placeholder="请输入职位">
 		    			<!--<select  name="job" class="yz-box yzss sel_s">-->
