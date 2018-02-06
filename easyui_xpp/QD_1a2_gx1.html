@@ -59,7 +59,7 @@
                 if(viewArr[i]=="Ab2b") {$( ".delbut" ).show();}
             }//end for
         }
-        funBtn();
+
           /*第零步：把datatables插件的警告窗变成控制台打印*/
         $.fn.dataTable.ext.errMode = 'none';
 //------------以下部分是修改标题栏信息-start-----------
@@ -132,13 +132,15 @@
                     html += "    <div class=\"jl_date\"style=\"border-bottom:1px solid #d9d9d9;height:50px;line-height:50px;color:#757574;\">"+Obj.recordDate+"</div>";
                     html += "    <div class=\"jl_remark\"style=\"line-height:40px;font-size:20px;margin-bottom:20px;\">"+Obj.remarkText+"</div>";
                     html += "    <div class=\"jl_uuid\"style=\"display:none;\">"+Obj.uuid+"</div>";
-                    html += "<div class=\"btn-box\" style=\"margin-top:30px;\">";
+                    html += "<div class=\"btn-box btn\" style=\"margin-top:30px;\">";
                     html += "<button  class=\"easyui-linkbutton btn-qr opener\" >修改</button>";
                     html += "<button  class=\"easyui-linkbutton btn-qr delbut\" >删除</button>";
                     html += "</div>";
                     html += "</div>";
                     $('#gzjl_List').append(html);
                 }
+                console.log(66);
+              funBtn();
             }
         },
         'afterLoad': function(elementsLoaded,max) {
@@ -282,7 +284,7 @@
           success:function(result){
             var obj = JSON.parse(result);
             alert(obj.message);
-            $("#gzjl_List").prepend("<div class=\"show_box\"style=\"border:1px solid #d9d9d9;border-radius:5px;margin-top:20px;margin-right:20px;padding:10px 20px;\"><div class=\"jl_date\"style=\"border-bottom:1px solid #d9d9d9;height:50px;line-height:50px;color:#757574;\">"+add_data.recordDate+"</div><div class=\"jl_remark\"style=\"line-height:40px;font-size:20px;margin-bottom:20px;\">"+add_data.remarkText+"</div><div class=\"jl_uuid\"style=\"display:none;\">"+obj.data+"</div><div class=\"btn-box\" style=\"margin-top:30px;\"><button  class=\"easyui-linkbutton btn-qr opener\" >修改</button><button  class=\"easyui-linkbutton btn-qr delbut\" >删除</button></div></div>");
+            $("#gzjl_List").prepend("<div class=\"show_box\"style=\"border:1px solid #d9d9d9;border-radius:5px;margin-top:20px;margin-right:20px;padding:10px 20px;\"><div class=\"jl_date\"style=\"border-bottom:1px solid #d9d9d9;height:50px;line-height:50px;color:#757574;\">"+add_data.recordDate+"</div><div class=\"jl_remark\"style=\"line-height:40px;font-size:20px;margin-bottom:20px;\">"+add_data.remarkText+"</div><div class=\"jl_uuid\"style=\"display:none;\">"+obj.data+"</div><div class=\"btn-box btn\" style=\"margin-top:30px;\"><button  class=\"easyui-linkbutton btn-qr opener\" >修改</button><button  class=\"easyui-linkbutton btn-qr delbut\" >删除</button></div></div>");
             $('#ffAdd').form('clear');
           }
         });
@@ -340,6 +342,7 @@
     });
     return keDayList;
   }// end  huiFuncList外圈 1_x1
+
 } );//end 最外层 $(document).ready
 
     </script>
