@@ -141,5 +141,14 @@
 		<url-pattern>/aaDphone</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>aaDweixinN</servlet-name>
+		<servlet-class>com.QDcrm.controller.DweixinController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>aaDweixinN</servlet-name>
+		<url-pattern>/aaDweixin</url-pattern>
+	</servlet-mapping>
+
 
 </web-app>
