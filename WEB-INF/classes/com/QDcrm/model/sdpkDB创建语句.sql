@@ -71,10 +71,38 @@ CREATE TABLE t_employee (
 );
 
 --------------------------------------
+-- 手机号码表t_dphone
 
+CREATE TABLE t_dphone (
+  uuid varchar(50) NOT NULL,
+  phoneNO varchar(50) NOT NULL,
+  ditchUuid varchar(50) NOT NULL,
+  empDitUuid varchar(50) NOT NULL,
+  
+  createDate datetime DEFAULT NULL,
+  modifyDate datetime DEFAULT NULL,
+  createPeople varchar(50) DEFAULT NULL,
+  modifyPeople varchar(50) DEFAULT NULL,
+  
+  PRIMARY KEY (uuid)
+);
 
 --------------------------------------
+-- 微信号码表t_dweixin
 
+CREATE TABLE t_dweixin (
+  uuid varchar(50) NOT NULL,
+  weixinNO varchar(50) NOT NULL,
+  ditchUuid varchar(50) NOT NULL,
+  empDitUuid varchar(50) NOT NULL,
+  
+  createDate datetime DEFAULT NULL,
+  modifyDate datetime DEFAULT NULL,
+  createPeople varchar(50) DEFAULT NULL,
+  modifyPeople varchar(50) DEFAULT NULL,
+  
+  PRIMARY KEY (uuid)
+);
 
 --------------------------------------
 
