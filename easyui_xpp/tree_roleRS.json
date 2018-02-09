@@ -7,6 +7,9 @@
 		"text":"欢迎页",
 		"state":"closed"
 	},{
+		"id":"Ad",
+		"text":"号码查重"
+	},{
 		"id":"Ae",
 		"text":"新增渠道"
 	},{
