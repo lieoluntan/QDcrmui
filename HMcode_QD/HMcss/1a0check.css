@@ -89,7 +89,6 @@
     width:1020px;
     font-size:16px;
     font-weight: normal;
-    padding-top:20px;
     color:#808080;
     clear: both;
 }
@@ -285,7 +284,7 @@ tbody tr:hover{
 .tit_style h3{
     font-size: 16px;
     color:#18be76;
-    padding-top:30px;
+    padding-bottom:10px;
     font-weight: normal;
     line-height: 16px;
 }
@@ -345,11 +344,13 @@ tbody tr:hover{
 }
 
 .numberbox,.easyui-textbox{
-    width:102px;
-    height:34px;
     line-height:34px;
     border-radius:5px;
     text-align: center;
+    border:1px solid #ccc;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 #phone_num tr,#wei_num tr{
     display:block;
