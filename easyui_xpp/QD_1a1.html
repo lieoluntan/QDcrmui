@@ -87,6 +87,7 @@
 			data:JSON.stringify(sendData),
 			success:function(msg){
 				xiala(msg);
+				console.log(msg);
 			}
 		});
 		function xiala(msg) {
@@ -98,7 +99,8 @@
                 valueField: 'uuid',
                 textField: 'name',
                 selectOnNavigation: false
-			})
+			});
+            $('#empUuid').combobox('setValue',$.cookie('ckUserEmpUuid'));
         }
 		function submitForm(){
 			var f1=yzV1();
@@ -196,7 +198,7 @@
             		<tr>
 	    			<td class="name-s" style="padding:0;width:58px;">负责人</td>
 	    			<td style="margin-left:20px;">
-						<input id="empUuid" name="empUuid" data-options="editable:true" class="easyui-combobox yzss" style="width: 200px; height: 36px; color:#646464; display: none;" value="请选择渠道负责人" comboname="empUuid">
+						<input id="empUuid" name="empUuid" data-options="editable:true" class="easyui-combobox yzss" style="width: 200px; height: 36px; color:#646464; display: none;" comboname="empUuid">
 					</td>
 						<td class="name-s" style="padding-right: 0;padding-left:95px; ">渠道等级</td>
 						<td style="margin-left:20px;">
@@ -207,7 +209,7 @@
 								<option>D</option>
 							</select>
 						</td>
-						<td class="name-s" style="padding-right: 0;padding-left:91px; ">佣金比例</td>
+						<td class="name-s" style="padding-right: 0;padding-left:95px; ">佣金比例</td>
 						<td style="margin-left:20px;">
 							<input type="text" style="height: 36px;" name="moneyRate" id="moneyRate" class="easyui-numberbox yzss yz-box"  placeholder="请输入佣金">
 						</td>
@@ -228,7 +230,7 @@
             		</table>
             	</form>
             	<!-- 按钮div开始 -->
-            	<div class="btn-box" style="margin-right: 14px;">
+            	<div class="btn-box" style="margin-right: 4px;">
 	    			<a href="javascript:void(0)" class="easyui-linkbutton btn-xk" onclick="clearForm()">清空</a>
 	    			<a href="javascript:void(0)" class="easyui-linkbutton btn-qr" onclick="submitForm()">下一步</a>
 	   			 </div>
