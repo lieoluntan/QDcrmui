@@ -126,7 +126,7 @@
 				Conuuid = $.cookie("ck_ditchUuid",obj.data);
 				console.log(Conuuid);
 				//调用父级弹窗start
-            	window.location.href="QD_1a1_gx1.html";
+	           	window.location.href="QD_1a1_gx1.html";
         		//调用父级弹窗end
 				
 				}
@@ -194,11 +194,11 @@
             		<table class="tab-style">
             		<!-- 第一行 -->
             		<tr>
-	    			<td class="name-s" style="padding:0;width:63px;">负责人</td>
+	    			<td class="name-s" style="padding:0;width:58px;">负责人</td>
 	    			<td style="margin-left:20px;">
 						<input id="empUuid" name="empUuid" data-options="editable:true" class="easyui-combobox yzss" style="width: 200px; height: 36px; color:#646464; display: none;" value="请选择渠道负责人" comboname="empUuid">
 					</td>
-						<td class="name-s" style="padding-right: 0;padding-left:90px; ">渠道等级</td>
+						<td class="name-s" style="padding-right: 0;padding-left:95px; ">渠道等级</td>
 						<td style="margin-left:20px;">
 							<select  name="rank" class="yz-box yzss sel_s">
 								<option>A</option>
@@ -207,6 +207,10 @@
 								<option>D</option>
 							</select>
 						</td>
+						<td class="name-s" style="padding-right: 0;padding-left:91px; ">佣金比例</td>
+						<td style="margin-left:20px;">
+							<input type="text" style="height: 36px;" name="moneyRate" id="moneyRate" class="easyui-numberbox yzss yz-box"  placeholder="请输入佣金">
+						</td>
 	    			</tr>
 	    			<!-- 第一行结束 -->
 	    		</table>
@@ -214,11 +218,11 @@
 	    		<table class="tab-style">
 					<tr>
 						<td class="name-s" style="padding-left:0">来源</td>
-						<td><input  type="text" name="source" class="yzss" style="width:949px;" placeholder="请输入渠道来源"></input></td>
+						<td><input  type="text" name="source" class="yzss" style="width:955px;" placeholder="请输入渠道来源"></input></td>
 					</tr>
             		<tr>
 	    			<td class="name-s" style="padding-left:0">备注</td>
-	    			<td><input  type="text" name="remark" class="yzss" style="width:949px;" value="无"></input></td>
+	    			<td><input  type="text" name="remark" class="yzss" style="width:955px;" value="无"></input></td>
 	    			</tr>
 	    			<!-- 第二行结束 -->
             		</table>

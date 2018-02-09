@@ -175,6 +175,7 @@
                     { "data": "name" },
                     { "data": "empName" },
                     { "data": "rank" },
+                    { "data": "moneyRate" },
                     { "data": "company" },
                     { "data": "job" },
                     {
@@ -293,30 +294,18 @@
                 var delRowData = {};
                 //获取选择那一行的数据
                 delRowData = table.row('.selected').data();
+                console.log(delRowData.moneyRate);
                 document.ffname2a2.name.value= delRowData.name;
                 document.ffname2a2.sex.value= delRowData.sex;
                 document.ffname2a2.weixin.value= delRowData.weixin;
                 document.ffname2a2.phone.value= delRowData.phone;
                 document.ffname2a2.company.value= delRowData.company;
+                $('#moneyRate').numberbox('setValue',delRowData.moneyRate);
                 document.ffname2a2.job.value= delRowData.job;
                 $('#empUuid').combobox("setValue",delRowData.empUuid);
                 document.ffname2a2.rank.value= delRowData.rank;
                 document.ffname2a2.source.value= delRowData.source;
                 document.ffname2a2.remark.value= delRowData.remark;
-
-                //调用父级弹窗start
-                // var $parent = self.parent.$;
-                // $parent('#pwin').window({
-                //     modal:true,
-                //     width:1000,
-                //     height:800,
-                //     // content:$('#dialog').html(),
-                //     content:$( "#dialog" ).dialog( "open" ).html(),
-                //     title:'父级窗口'
-                // });
-                //调用父级弹窗end
-                // $( "#dialog" ).dialog( "open" );
-                // $('#dialog').show();
                 $('#dialog').dialog('open');
                 $.cookie('ck_uuid_ditch', delRowData.uuid);//uuid
                 $.cookie('ck_name', delRowData.name);//姓名
@@ -418,6 +407,7 @@
                     <th>姓名</th>
                     <th>负责人</th>
                     <th>渠道等级</th>
+                    <th>佣金比例</th>
                     <th>单位</th>
                     <th>职位</th>
                     <th>状态</th>
@@ -430,6 +420,7 @@
                     <th>姓名</th>
                     <th>负责人</th>
                     <th>渠道等级</th>
+                    <th>佣金比例</th>
                     <th>单位</th>
                     <th>职位</th>
                     <th>状态</th>
@@ -502,6 +493,10 @@
                         <option>D</option>
                     </select>
                 </td>
+                <td class="name-s" style="padding-right: 0;padding-left:65px; ">佣金比例</td>
+                <td style="margin-left:20px;">
+                    <input type="text" name="moneyRate" id="moneyRate" class="easyui-numberbox yzss yz-box" style="height: 36px;" placeholder="请输入佣金">
+                </td>
             </tr>
             <!-- 第一行结束 -->
         </table>
@@ -520,7 +515,7 @@
 
     </form>
     <!-- 按钮div开始 -->
-    <div class="btn-box" style="margin-right: 20px;">
+    <div class="btn-box" style="margin-right: 19px;">
         <button  class="easyui-linkbutton btn-xk" id="close">关闭</button>
         <button  class="easyui-linkbutton btn-qr" id="submitForm">确认</button>
     </div>

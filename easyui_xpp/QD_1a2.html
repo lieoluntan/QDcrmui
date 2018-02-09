@@ -132,6 +132,7 @@
             { "data": "name" },
             { "data": "empName" },
             { "data": "rank" },
+            { "data": "moneyRate" },
             { "data": "company" },
             { "data": "job" },
             {
@@ -275,11 +276,13 @@
         var delRowData = {};
         //获取选择那一行的数据
          delRowData = table.row('.selected').data();
+         console.log(delRowData.moneyRate);
          document.ffname2a2.name.value= delRowData.name;
          document.ffname2a2.sex.value= delRowData.sex;
          document.ffname2a2.weixin.value= delRowData.weixin;
          document.ffname2a2.phone.value= delRowData.phone;
          document.ffname2a2.company.value= delRowData.company;
+        $('#moneyRate').numberbox('setValue',delRowData.moneyRate);
          document.ffname2a2.job.value= delRowData.job;
         $('#empUuid').combobox("setValue",delRowData.empUuid);
          document.ffname2a2.rank.value= delRowData.rank;
@@ -315,7 +318,6 @@
 
 
     //步骤6，编辑确定事件
-    // $( "#submitForm" ).click(function() { });
     $( "#submitForm" ).click(function() { 
         //要初始化一个对象，不然会报undifine未定义错误
             var delRowData = {};
@@ -404,6 +406,7 @@
                                 <th>姓名</th>
                                 <th>负责人</th>
                                 <th>渠道等级</th>
+                                <th>佣金比例</th>
                                 <th>单位</th>
                                 <th>职位</th>
                                 <th>状态</th>
@@ -425,6 +428,7 @@
                             <th>姓名</th>
                             <th>负责人</th>
                             <th>渠道等级</th>
+                            <th>佣金比例</th>
                             <th>单位</th>
                             <th>职位</th>
                             <th>状态</th>
@@ -496,6 +500,10 @@
                                 <option>C</option>
                                 <option>D</option>
                             </select>
+                        </td>
+                        <td class="name-s" style="padding-right: 0;padding-left:65px; ">佣金比例</td>
+                        <td style="margin-left:20px;">
+                            <input type="text" name="moneyRate" id="moneyRate" class="easyui-numberbox yzss yz-box" style="height: 36px;" placeholder="请输入佣金">
                         </td>
                     </tr>
                     <!-- 第一行结束 -->
