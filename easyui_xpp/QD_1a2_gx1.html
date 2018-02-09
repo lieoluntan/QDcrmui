@@ -87,8 +87,8 @@
     $(function() {
 
         // 底部加载进度条
-        var loadinghtml = '<div class="loading" id="loading">正在加载,请稍后...</div>';
-        var nomoreresults = '<div class="loading" id="nomoreresults">抱歉，已经没有数据了！</div>';
+        var loadinghtml = '<div class="loading" id="loading" style="background-color: #d9d9d9">正在加载,请稍后...</div>';
+        var nomoreresults = '<div class="loading" id="nomoreresults" style="background-color: #d9d9d9">抱歉，已经没有数据了！</div>';
         relod = $('#gzjl_List').scrollPagination({
         // 你要搜索结果的页面
         'contentPage': {},
@@ -129,7 +129,7 @@
                     console.log(Obj);
                     var html = "";
                     html += "<div class=\"show_box\"style=\"border:1px solid #d9d9d9;border-radius:5px;margin-top:20px;margin-right:20px;padding:10px 20px;\">";
-                    html += "    <div class=\"jl_date\"style=\"border-bottom:1px solid #d9d9d9;height:50px;line-height:50px;color:#757574;\">"+Obj.recordDate+"</div>";
+                    html += "    <div class=\"jl_date\"style=\"border-bottom:1px solid #d9d9d9;height:25px;line-height:25px;color:#757574;\">"+Obj.recordDate+"</div>";
                     html += "    <div class=\"jl_remark\"style=\"line-height:40px;font-size:20px;margin-bottom:20px;\">"+Obj.remarkText+"</div>";
                     html += "    <div class=\"jl_uuid\"style=\"display:none;\">"+Obj.uuid+"</div>";
                     html += "<div class=\"btn-box btn\" style=\"margin-top:30px;\">";
