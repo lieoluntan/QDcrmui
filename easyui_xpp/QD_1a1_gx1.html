@@ -94,6 +94,19 @@
             $('#ff').form('clear');
         });//end function clearForm
 
+//            给日历一个默认的时间
+            $(function(){
+                var curr_time = new Date();
+                var strDate = curr_time.getFullYear()+"-";
+                strDate += curr_time.getMonth()+1+"-";
+                strDate += curr_time.getDate()+" ";
+                strDate += curr_time.getHours()+":";
+                strDate += curr_time.getMinutes()+":";
+                strDate += curr_time.getSeconds();
+                console.log(strDate);
+                $("#recordDate").datetimebox("setValue", strDate);
+            });
+
 });
     </script> 
 </head>
