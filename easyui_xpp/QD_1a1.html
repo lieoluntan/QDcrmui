@@ -87,7 +87,7 @@
 			data:JSON.stringify(sendData),
 			success:function(msg){
 				xiala(msg);
-				console.log(msg);
+//				console.log(msg);
 			}
 		});
 		function xiala(msg) {
@@ -104,6 +104,18 @@
         }
 		function submitForm(){
 			var f1=yzV1();
+			var weixin = $("#weixin").val();
+			var phone = $('#phone').val();
+//			console.log(weixin);
+//			console.log(phone);
+			if((weixin == ""||weixin == null)&&(phone == ""||phone == null)){
+			    alert("请输入微信号或手机号");
+			    return false;
+			}else if((weixin == ""||weixin == null)&&(phone !== ""&&phone !== null)){
+                $("#weixin").val("无");
+			}else {
+                $('#phone').val("无");
+			}
             var sel = $('#empUuid').combobox("getValue");
             if(sel=="请选择渠道负责人" || sel == "" || sel == null){
                 alert("请选择渠道负责人");
@@ -128,7 +140,7 @@
 				Conuuid = $.cookie("ck_ditchUuid",obj.data);
 				console.log(Conuuid);
 				//调用父级弹窗start
-	           	window.location.href="QD_1a1_gx1.html";
+//	           	window.location.href="QD_1a1_gx1.html";
         		//调用父级弹窗end
 				
 				}
@@ -171,14 +183,14 @@
 						</select>
 	    			</td>
 	    			<td class="name-s">手机</td>
-	    			<td><input  type="text" name="phone" class="yz-box yzss" placeholder="请输入电话号码"></input></td>
+	    			<td><input  type="text" name="phone" id="phone" class="yzss" placeholder="请输入电话号码"></input></td>
 	    			</tr>
 	    			<!-- 第一行结束 -->
 	    			<!-- 第二行 -->
             		<tr>
 	    			<td class="name-s" style="padding-left:0">微信</td>
 	    			<td>
-						<input  type="text" name="weixin" class="yz-box yzss" placeholder="请输入微信号"></input>
+						<input  type="text" id="weixin" name="weixin" class="yzss" placeholder="请输入微信号"></input>
 	    			</td>
 	    			<td class="name-s">单位</td>
 	    			<td><input  type="text" name="company" class="yz-box yzss" placeholder="请输入所在单位"></input></td>
