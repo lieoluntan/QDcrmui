@@ -92,6 +92,7 @@
       function tableWShow(result){
         $.fn.dataTable.ext.errMode = 'none';
         $('#G3_tb5').DataTable({
+            "dom":'frtpi',
           bSort:true,
           scrollX :670,
           "bLengthChange":false,
@@ -174,9 +175,45 @@
     });//end 最外层 $(document).ready
     </script>
 
-
+    <style>
+        .dataTables_wrapper .dataTables_info{
+            clear: none;
+            float: right;
+            padding-right: 20px;
+            margin-top:20px;
+        }
+        .dataTables_wrapper .dataTables_paginate{
+            float: right;
+        }
+        #phone_num ,#wei_num{
+            padding-bottom: 20px;
+        }
+       #wei_num ul ,#phone_num ul{
+            overflow: hidden;
+           margin-top:20px;
+       }
+       #wei_num ul li ,#phone_num ul li{
+           width:20%;
+           display: block;
+           float: left;
+           overflow: hidden;
+           line-height: 34px;
+           text-align: -webkit-center;
+       }
+       #wei_num ul li input ,#phone_num ul li input{
+           display: block;
+           width:90%;
+           line-height: 28px;
+           border-radius: 5px;
+                   -webkit-box-sizing: border-box;
+                   -moz-box-sizing: border-box;
+                   box-sizing: border-box;
+           text-align: center;
+           border:1px solid #ccc;
+           }
+    </style>
 </head>
-<body>
+<body style="overflow: hidden">
     
     <div id="fen_container" class="tab-con">
 
@@ -188,7 +225,7 @@
 
                     <div style="background-color: #FFFFFF;min-width:400px;float:left;margin-right:4%;width:48%;"><!-- 主框架左半页 start -->
                     
-                    <div class="left_t" style="min-width: 400px;">
+                    <div class="left_t" style="min-width: 400px; overflow: hidden">
                         <div class="tit_style">
                             <h3>手机号查重</h3>
                         </div>
@@ -208,22 +245,22 @@
                             </tr><!-- 第一个表格第一行结束 -->
                             <!-- 第一个表格第二行开始 -->
                         </table><!-- end id=header_3_tb1 -->
-                        <table id="phone_num"class="dataTable">
-                            <tr>
-                                <td><input type="text" class="easyui-numberbox phoneNum" value="0" data-options="min:0,precision:0,disabled:true"></td>
-                                <td><input type="text" class="easyui-numberbox phoneNum" value="0" data-options="min:0,precision:0,disabled:true"></td>
-                                <td><input type="text" class="easyui-numberbox phoneNum" value="0" data-options="min:0,precision:0,disabled:true"></td>
-                                <td><input type="text" class="easyui-numberbox phoneNum" value="0" data-options="min:0,precision:0,disabled:true"></td>
-                                <td><input type="text" class="easyui-numberbox phoneNum" value="0" data-options="min:0,precision:0,disabled:true"></td>
-                            </tr>
-                            <tr>
-                                <td><input type="text" class="easyui-numberbox phoneNum" value="0" data-options="min:0,precision:0,disabled:true"></td>
-                                <td><input type="text" class="easyui-numberbox phoneNum" value="0" data-options="min:0,precision:0,disabled:true"></td>
-                                <td><input type="text" class="easyui-numberbox phoneNum" value="0" data-options="min:0,precision:0,disabled:true"></td>
-                                <td><input type="text" class="easyui-numberbox phoneNum" value="0" data-options="min:0,precision:0,disabled:true"></td>
-                                <td><input type="text" class="easyui-numberbox phoneNum" value="0" data-options="min:0,precision:0,disabled:true"></td>
-                            </tr>
-                        </table>
+                        <div id="phone_num" class="dataTable">
+                            <ul>
+                                <li><input type="text" disabled class="phoneNum"></li>
+                                <li><input type="text" disabled class="phoneNum"></li>
+                                <li><input type="text" disabled class="phoneNum"></li>
+                                <li><input type="text" disabled class="phoneNum"></li>
+                                <li><input type="text" disabled class="phoneNum"></li>
+                            </ul>
+                            <ul>
+                                <li><input type="text" disabled class="phoneNum"></li>
+                                <li><input type="text" disabled class="phoneNum"></li>
+                                <li><input type="text" disabled class="phoneNum"></li>
+                                <li><input type="text" disabled class="phoneNum"></li>
+                                <li><input type="text" disabled class="phoneNum"></li>
+                            </ul>
+                        </div>
                         <!-- 包裹关系一列表，关系二列表 start-->
                         <div id="HasG1G2">
                             <table id="G1_tb2" class="tab-mians dataTable" style="width:100%;">
@@ -252,7 +289,7 @@
                         </div> <!-- 包裹关系一列表，关系二列表 结束-->
                     </div>
                     </div><!-- 主框架左半页 end -->
-                    <div style="background-color: #FFFFFF;min-width:400px;height: 700px;float:left;width:48%;"><!-- 主框架右半页 start -->
+                    <div style="background-color: #FFFFFF;min-width:400px;height: 700px;float:left;width:48%;overflow:hidden;"><!-- 主框架右半页 start -->
 
                     <!-- 划文字 -->
                 <div class="tit_style">
@@ -275,22 +312,22 @@
                     </tr><!-- 第4表格第二行结束 -->
 
                     </table><!-- 第4表格结束 header_3_tb4 -->
-                    <table id="wei_num"class="dataTable">
-                        <tr>
-                            <td><input type="text" class="easyui-numberbox weiNum" value="0" data-options="min:0,precision:0,disabled:true"></td>
-                            <td><input type="text" class="easyui-numberbox weiNum" value="0" data-options="min:0,precision:0,disabled:true"></td>
-                            <td><input type="text" class="easyui-numberbox weiNum" value="0" data-options="min:0,precision:0,disabled:true"></td>
-                            <td><input type="text" class="easyui-numberbox weiNum" value="0" data-options="min:0,precision:0,disabled:true"></td>
-                            <td><input type="text" class="easyui-numberbox weiNum" value="0" data-options="min:0,precision:0,disabled:true"></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" class="easyui-numberbox weiNum" value="0" data-options="min:0,precision:0,disabled:true"></td>
-                            <td><input type="text" class="easyui-numberbox weiNum" value="0" data-options="min:0,precision:0,disabled:true"></td>
-                            <td><input type="text" class="easyui-numberbox weiNum" value="0" data-options="min:0,precision:0,disabled:true"></td>
-                            <td><input type="text" class="easyui-numberbox weiNum" value="0" data-options="min:0,precision:0,disabled:true"></td>
-                            <td><input type="text" class="easyui-numberbox weiNum" value="0" data-options="min:0,precision:0,disabled:true"></td>
-                        </tr>
-                    </table>
+                    <div id="wei_num">
+                        <ul>
+                            <li><input type="text" disabled class="weiNum"></li>
+                            <li><input type="text" disabled class="weiNum"></li>
+                            <li><input type="text" disabled class="weiNum"></li>
+                            <li><input type="text" disabled class="weiNum"></li>
+                            <li><input type="text" disabled class="weiNum"></li>
+                        </ul>
+                        <ul>
+                            <li><input type="text" disabled class="weiNum"></li>
+                            <li><input type="text" disabled class="weiNum"></li>
+                            <li><input type="text" disabled class="weiNum"></li>
+                            <li><input type="text" disabled class="weiNum"></li>
+                            <li><input type="text" disabled class="weiNum"></li>
+                        </ul>
+                    </div>
                     <!-- end  3行布局 -->
 
                     <table id="G3_tb5" class="tab-mians dataTable " style="width:100%;">
@@ -330,16 +367,6 @@
 
 
     </div><!-- end div  id="fen_container"-->
-    <script>
-      $(function(){
-        $('.easyui-numberbox,.validatebox-text').css({
-          "width":"130px",
-        "height":"34px",
-        "line-height":"34px",
-        "border-radius":"5px",
-        "text-align":" center"
-        });
-      })
 
 </body>
 </html>
