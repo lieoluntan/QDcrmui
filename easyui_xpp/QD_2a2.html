@@ -130,7 +130,6 @@
         "ajax": "/QDcrm/aaEmp?qqiu=list",
         "columns": [
             { "data": "name" },
-            { "data": "empNum" },
             { "data": "phone" },
             { "data": "depart" },
             { "data": "job" },
@@ -277,13 +276,11 @@
          delRowData = table.row('.selected').data();
          console.log(delRowData);
          document.ffname.name.value= delRowData.name;
-         document.ffname.empNum.value= delRowData.empNum;
          document.ffname.phone.value= delRowData.phone;
          document.ffname.job.value= delRowData.job;
          document.ffname.remark.value= delRowData.remark;
          document.ffname.claTeacher.value= delRowData.claTeacher;
          document.ffname.sex.value= delRowData.sex;
-         document.ffname.org.value= delRowData.org;
          var workDate = delRowData.workDate;
          var depart = delRowData.depart;
          console.log(depart);
@@ -384,7 +381,6 @@
                         <thead class="tab-tit">
                             <tr>
                                 <th style="min-width:140px;">姓名</th>
-                                <th style="min-width:140px;">员工编号</th>
                                 <th style="min-width:160px;">手机号</th>
                                 <th style="min-width:140px;">部门</th>
                                 <th style="min-width:140px;">职位</th>
@@ -395,7 +391,6 @@
                         <tfoot class="tab-tit">
                             <tr>
                                 <th style="min-width:140px;">姓名</th>
-                                <th style="min-width:140px;">员工编号</th>
                                 <th style="min-width:160px;">手机号</th>
                                 <th style="min-width:140px;">部门</th>
                                 <th style="min-width:140px;">职位</th>
@@ -434,21 +429,12 @@
                             <option value="女">女</option>
                         </select>
                     </td>
-                    <td class="name-s">员工编号</td>
-                    <td><input  type="text" name="empNum" class="yzss" placeholder="请输入员工编号"> </td>
+                    <td  class="name-s">入职时间</td>
+                    <td><input id="workDate" name="workDate" type="text" class="easyui-datebox yzss" required="required" ></td>
                     </tr>
                     <!-- 第一行结束 -->
                     <!-- 第二行 -->
                     <tr>
-                        <td class="name-s" style="padding-left:0">任职校区<!--<b>*</b>--></td>
-                    <td>
-                        <select  name="org" class="yzss sel_s">
-                            <option value="所有校区">所有校区</option>
-                            <option value="企业公馆校区">企业公馆校区</option>
-                        </select>
-                    </td>
-                    <td  class="name-s">入职时间</td>
-                    <td><input id="workDate" name="workDate" type="text" class="easyui-datebox yzss" required="required" ></td>
                         <td class="name-s" style="padding-left: 79px;display:none;">是否全职</td>
                         <td style="display:none;">
                             <select  name="fullhalf" class="yz-box yzss sel_s">
@@ -456,13 +442,7 @@
                                 <option value="兼职">兼职</option>
                             </select>
                         </td>
-                        <td class="name-s">班&nbsp;主&nbsp;任</td>
-                        <td>
-                            <select  name="claTeacher" class="yz-box yzss sel_s">
-                                <option value="true">是</option>
-                                <option value="false">否</option>
-                            </select>
-                        </td>
+
                     </tr>
                     <!-- 第二行结束 -->
                     <!-- 第三行开始 -->
@@ -488,6 +468,13 @@
                             <!--<option value="任课老师">任课老师</option>-->
                         <!--</select>-->
                     </td>
+                    <td class="name-s">班&nbsp;主&nbsp;任</td>
+                    <td>
+                        <select  name="claTeacher" class="yz-box yzss sel_s">
+                            <option value="true">是</option>
+                            <option value="false">否</option>
+                        </select>
+                    </td>
                     </tr>
                     <!-- 第三行结束 -->
                     </table><!-- end id=header_3_tb1 -->
@@ -507,7 +494,7 @@
                     <!-- 第二行 -->
                     <tr>
                     <td class="name-s" style="padding-left:0">联系电话</td>
-                    <td><input  type="text" name="phone" class="yzss" placeholder="请输入联系电话"></td>
+                    <td><input  type="text" name="phone" class="yzss" placeholder="请输入联系电话"style="width: 859px;"></td>
 
                     </tr>
                     <!-- 第二行结束 -->
