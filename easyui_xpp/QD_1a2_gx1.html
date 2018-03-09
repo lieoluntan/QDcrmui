@@ -178,6 +178,8 @@
           //post请求体传给后台的js对象
           var send_data = {};
           send_data.uuid = Auuid;
+          send_data.userUuid = $.cookie("ckUserEmpUuid");
+          send_data.userName = $.cookie("ckUserName");
           // alert( "选择的行的uuid: "+send_data);
           //调用ajax方法传给后台接口
           $.ajax({
@@ -274,6 +276,8 @@
       if(flag){
         var add_data = $("#ffAdd").serializeObject();
         add_data.ditchUuid = $.cookie('ck_uuid_ditch');
+        add_data.userUuid = $.cookie("ckUserEmpUuid");
+        add_data.userName = $.cookie("ckUserName");
         console.log(add_data);
         $.ajax({
           url:"/QDcrm/aaRecord?qqiu=add",
@@ -297,6 +301,8 @@
       if(flag){
         var add_data = $("#ffDlg").serializeObject();
         add_data.uuid = uuid;
+        add_data.userUuid = $.cookie("ckUserEmpUuid");
+        add_data.userName = $.cookie("ckUserName");
         console.log(add_data);
         $.ajax({
           url:"/QDcrm/aaRecord?qqiu=edit",
