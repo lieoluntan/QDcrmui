@@ -77,7 +77,7 @@
                 <th style="min-width:120px;">学员名</th>
                 <th style="min-width:120px;">操作行为</th>
                 <th style="min-width:190px;">操作时间</th>
-                <th>跟踪备注</th>
+                <th style="max-width:300px;word-wrap:break-word;">跟踪备注</th>
             </tr>
         </thead>
         <tbody>
@@ -90,7 +90,7 @@
                 <th style="min-width:120px;">学员名</th>
                 <th style="min-width:120px;">操作行为</th>
                 <th style="min-width:190px;">操作时间</th>
-                <th>跟踪备注</th>
+                <th style="max-width:300px;word-wrap:break-word;">跟踪备注</th>
             </tr>
         </tfoot>
     </table>
@@ -127,13 +127,14 @@
                 huidiao(result);
             }
         });
+        var remarkShowLength = 10;
         function huidiao(result) {
             var objData = result.data;
             console.log(objData);
             $("#adm-user").dataTable().fnDestroy();
             tabData = $("#adm-user").DataTable({
                 "dom":'frtpi',
-                "order": [[ 5, "desc" ]],
+                "order": [[ 4, "desc" ]],
                 "bLengthChange":false,
                 bSort:true,
                 language: {
@@ -156,8 +157,16 @@
                         "sLast": "末页"
                     },
                     "oAria": {
-                        "sSortAscending": ": 以升序排列此列",
-                        "sSortDescending": ": 以降序排列此列"
+                      "sSortAscending": ": 以升序排列此列",
+                      "sSortDescending": ": 以降序排列此列"
+                    }
+                    },
+                  "createdRow": function( row, objData, dataIndex ) {
+                    if(objData.dataGxChina){
+                      if(objData.dataGxChina.length > remarkShowLength){//只有超长，才有td点击事件
+//                      $(row).children('td').eq(5).attr('onclick','javascript:changeShowRemarks(this);');
+                      }
+                      $(row).children('td').eq(5).attr('content',objData.dataGxChina);
                     }
                 },
                 data:objData,
@@ -169,8 +178,47 @@
                     { "data":"userAction"},
                     { "data":"updateTime"},
                     { "data":"dataGxChina"}
-                ]
+                ],
+              "columnDefs" : [
+                {
+                  "type": "date",
+                  "targets": 5,
+                  "render": function (objData, type, row, meta) {
+                    console.log(row);
+                    if(row.dataGxChina){
+                      if (row.dataGxChina.length > remarkShowLength) {
+                        return getPartialRemarksHtml(row.dataGxChina);
+                      }else{
+                        return row.dataGxChina;
+                      }
+                    }
+
+                  }
+                }]
             });
+          //切换显示备注信息，显示部分或者全部
+          function changeShowRemarks(obj) {//obj是td
+            var content = $(obj).attr("content");
+            if (content != null && content != '') {
+              if ($(obj).attr("isDetail") == 'true') {//当前显示的是详细备注，切换到显示部分
+                //$(obj).removeAttr('isDetail');//remove也可以
+                $(obj).attr('isDetail', false);
+                $(obj).html(getPartialRemarksHtml(content));
+              } else {//当前显示的是部分备注信息，切换到显示全部
+                $(obj).attr('isDetail', true);
+                $(obj).html(getTotalRemarksHtml(content));
+              }
+            }
+          }
+          //部分备注信息
+          function getPartialRemarksHtml(remarks){
+            return remarks.substr(0,remarkShowLength) + '&nbsp;&nbsp;<a href="javascript:void(0);" ><b>...</b></a>';
+          }
+
+          //全部备注信息
+          function getTotalRemarksHtml(remarks){
+            return remarks + '&nbsp;&nbsp;<a href="javascript:void(0);" >收起</a>';
+          }
         }
         /* 第二步：对选中列表进行操作 */
         var selTable = $("#adm-user").on("click","tr",function(){
