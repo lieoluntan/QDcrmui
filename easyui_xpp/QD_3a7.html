@@ -277,43 +277,44 @@
         });
         /* 第三步：删除按钮的事件 */
         $("#btn-del").click(function(){
-            var delTableTr = {};
-            delTableTr = tabData.row(".selected").data();
-            tabData.row(".selected").remove().draw(false);//在页面进行删除操作
-            var delCon = delTableTr.uuid;
-            var delData = {};
-            delData.uuid = delCon;
-            /* ajax调用数据接口 */
-            $('.tit-tit').text($('#txt-toggle').val());
-            var txt = $('#txt-toggle').val();
-            if(txt == "跟踪日志"){
+            if(confirm("确定要删除吗？")){
+              var delTableTr = {};
+              delTableTr = tabData.row(".selected").data();
+              tabData.row(".selected").remove().draw(false);//在页面进行删除操作
+              var delCon = delTableTr.uuid;
+              var delData = {};
+              delData.uuid = delCon;
+                /* ajax调用数据接口 */
+              $('.tit-tit').text($('#txt-toggle').val());
+              var txt = $('#txt-toggle').val();
+              if(txt == "跟踪日志"){
                 delUrl = "/QDcrm/aaLogGX?qqiu=delete";
                 $.ajax({
-                    url:delUrl,
-                    type:"POST",
-                    data:JSON.stringify(delData),
-                    contentType:"application/json;charset=UTF-8",
-                    success:function(result){
-                   var obj = JSON.parse(result);
-                        alert(obj.message);
+                  url:delUrl,
+                  type:"POST",
+                  data:JSON.stringify(delData),
+                  contentType:"application/json;charset=UTF-8",
+                  success:function(result){
+                    var obj = JSON.parse(result);
+                    alert(obj.message);
 //                         window.location.reload();//页面刷新
-                    }
+                  }
                 });
-            }else {
+              }else {
                 delUrl = "/QDcrm/aaLogQD?qqiu=delete";
                 $.ajax({
-                    url:delUrl,
-                    type:"POST",
-                    data:JSON.stringify(delData),
-                    contentType:"application/json;charset=UTF-8",
-                    success:function(result){
+                  url:delUrl,
+                  type:"POST",
+                  data:JSON.stringify(delData),
+                  contentType:"application/json;charset=UTF-8",
+                  success:function(result){
 //                   console.log(typeof result);
-                        alert(result.message);
+                    alert(result.message);
 //                        window.location.reload();//页面刷新
-                    }
+                  }
                 });
+              }
             }
-
         });
         $('#txt-toggle').on("change",function () {
             $('.tit-tit').text($('#txt-toggle').val());
