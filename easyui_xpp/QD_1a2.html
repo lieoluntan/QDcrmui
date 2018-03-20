@@ -63,7 +63,7 @@
       else
       {
         alert("没有登陆");
-        window.location.href="../login.html";
+        // window.location.href="../login.html";
       }
     $(document).ready(function() {
 
@@ -74,13 +74,13 @@
         //判断已经退出登陆
         if ($.cookie("rsList") == "") {
           console.log("检测没有权限，重新登录或联系管理员");
-          window.location.href = "../login.html";
+          // window.location.href = "../login.html";
         }
         console.log("jquery里检测已经登陆");
       }
       else {
         console.log("jquery里检测没有登陆");
-        window.location.href = "../login.html";
+        // window.location.href = "../login.html";
       }
         //按钮权限开始
         function funBtn(){
