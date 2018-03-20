@@ -99,6 +99,30 @@
 </body>
 <script>
     var listUrl,delUrl,tabData;
+    var remarkShowLength = 10;
+    //切换显示备注信息，显示部分或者全部
+    function changeShowRemarks(obj) {//obj是td
+      var content = $(obj).attr("content");
+      if (content != null && content != '') {
+        if ($(obj).attr("isDetail") == 'true') {//当前显示的是详细备注，切换到显示部分
+          //$(obj).removeAttr('isDetail');//remove也可以
+          $(obj).attr('isDetail', false);
+          $(obj).html(getPartialRemarksHtml(content));
+        } else {//当前显示的是部分备注信息，切换到显示全部
+          $(obj).attr('isDetail', true);
+          $(obj).html(getTotalRemarksHtml(content));
+        }
+      }
+    }
+    //部分备注信息
+    function getPartialRemarksHtml(remarks){
+      return remarks.substr(0,remarkShowLength) + '&nbsp;&nbsp;<a href="javascript:void(0);" ><b>...</b></a>';
+    }
+
+    //全部备注信息
+    function getTotalRemarksHtml(remarks){
+      return remarks + '&nbsp;&nbsp;<a href="javascript:void(0);" >收起</a>';
+    }
     $(document).ready(function(){
         //按钮权限开始
         function funBtn(){
@@ -111,6 +135,75 @@
             }//end for
         }
         funBtn();
+
+      function huidiao(result) {
+        var objData = result.data;
+        $("#adm-user").dataTable().fnDestroy();
+        tabData = $("#adm-user").DataTable({
+          "dom":'frtpi',
+          "order": [[ 4, "desc" ]],
+          "bLengthChange":false,
+          bSort:true,
+          language: {
+            "sProcessing": "处理中...",
+            "sLengthMenu": "显示 _MENU_ 项结果",
+            "sZeroRecords": "没有匹配结果",
+            "sInfo": "共 _TOTAL_ 项",
+            "sInfoEmpty": "共 0 项",
+            "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+            "sInfoPostFix": "",
+            "sSearch": "搜索:",
+            "sUrl": "",
+            "sEmptyTable": "表中数据为空",
+            "sLoadingRecords": "载入中...",
+            "sInfoThousands": ",",
+            "oPaginate": {
+              "sFirst": "首页",
+              "sPrevious": "上页",
+              "sNext": "下页",
+              "sLast": "末页"
+            },
+            "oAria": {
+              "sSortAscending": ": 以升序排列此列",
+              "sSortDescending": ": 以降序排列此列"
+            }
+          },
+          "createdRow": function( row, objData, dataIndex ) {
+            if(objData.dataGxChina){
+              if(objData.dataGxChina.length > remarkShowLength){//只有超长，才有td点击事件
+                $(row).children('td').eq(5).attr('onclick','javascript:changeShowRemarks(this);');
+              }
+              $(row).children('td').eq(5).attr('content',objData.dataGxChina);
+            }
+          },
+          data:objData,
+          columns:[
+            {"data":"userName"},
+            // { "data":"tableName"},
+            { "data":"tableNameChina"},
+            { "data":"dataName"},
+            { "data":"userAction"},
+            { "data":"updateTime"},
+            { "data":"dataGxChina"}
+          ],
+          "columnDefs" : [
+            {
+              "type": "date",
+              "targets": 5,
+              "render": function (objData, type, row, meta) {
+                console.log(row);
+                if(row.dataGxChina){
+                  if (row.dataGxChina.length > remarkShowLength) {
+                    return getPartialRemarksHtml(row.dataGxChina);
+                  }else{
+                    return row.dataGxChina;
+                  }
+                }
+
+              }
+            }]
+        });
+      }
         /*第零步：把datatables插件的警告窗变成控制台打印*/
         $.fn.dataTable.ext.errMode = 'none';
         /* url判断 */
@@ -124,102 +217,55 @@
             data:JSON.stringify(allData),
             contentType:"application/json;charset=UTF-8",
             success:function (result) {
-                huidiao(result);
+                huidiaoOne(result);
             }
         });
-        var remarkShowLength = 10;
-        function huidiao(result) {
-            var objData = result.data;
-            console.log(objData);
-            $("#adm-user").dataTable().fnDestroy();
-            tabData = $("#adm-user").DataTable({
-                "dom":'frtpi',
-                "order": [[ 4, "desc" ]],
-                "bLengthChange":false,
-                bSort:true,
-                language: {
-                    "sProcessing": "处理中...",
-                    "sLengthMenu": "显示 _MENU_ 项结果",
-                    "sZeroRecords": "没有匹配结果",
-                    "sInfo": "共 _TOTAL_ 项",
-                    "sInfoEmpty": "共 0 项",
-                    "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
-                    "sInfoPostFix": "",
-                    "sSearch": "搜索:",
-                    "sUrl": "",
-                    "sEmptyTable": "表中数据为空",
-                    "sLoadingRecords": "载入中...",
-                    "sInfoThousands": ",",
-                    "oPaginate": {
-                        "sFirst": "首页",
-                        "sPrevious": "上页",
-                        "sNext": "下页",
-                        "sLast": "末页"
-                    },
-                    "oAria": {
-                      "sSortAscending": ": 以升序排列此列",
-                      "sSortDescending": ": 以降序排列此列"
-                    }
-                    },
-                  "createdRow": function( row, objData, dataIndex ) {
-                    if(objData.dataGxChina){
-                      if(objData.dataGxChina.length > remarkShowLength){//只有超长，才有td点击事件
-//                      $(row).children('td').eq(5).attr('onclick','javascript:changeShowRemarks(this);');
-                      }
-                      $(row).children('td').eq(5).attr('content',objData.dataGxChina);
-                    }
-                },
-                data:objData,
-                columns:[
-                    {"data":"userName"},
-                    // { "data":"tableName"},
-                    { "data":"tableNameChina"},
-                    { "data":"dataName"},
-                    { "data":"userAction"},
-                    { "data":"updateTime"},
-                    { "data":"dataGxChina"}
-                ],
-              "columnDefs" : [
-                {
-                  "type": "date",
-                  "targets": 5,
-                  "render": function (objData, type, row, meta) {
-                    console.log(row);
-                    if(row.dataGxChina){
-                      if (row.dataGxChina.length > remarkShowLength) {
-                        return getPartialRemarksHtml(row.dataGxChina);
-                      }else{
-                        return row.dataGxChina;
-                      }
-                    }
 
-                  }
-                }]
-            });
-          //切换显示备注信息，显示部分或者全部
-          function changeShowRemarks(obj) {//obj是td
-            var content = $(obj).attr("content");
-            if (content != null && content != '') {
-              if ($(obj).attr("isDetail") == 'true') {//当前显示的是详细备注，切换到显示部分
-                //$(obj).removeAttr('isDetail');//remove也可以
-                $(obj).attr('isDetail', false);
-                $(obj).html(getPartialRemarksHtml(content));
-              } else {//当前显示的是部分备注信息，切换到显示全部
-                $(obj).attr('isDetail', true);
-                $(obj).html(getTotalRemarksHtml(content));
-              }
+        function huidiaoOne(result) {
+        var objData = result.data;
+        console.log(objData);
+        $("#adm-user").dataTable().fnDestroy();
+        tabData = $("#adm-user").DataTable({
+          "dom":'frtpi',
+          "order": [[ 4, "desc" ]],
+          "bLengthChange":false,
+          bSort:true,
+          language: {
+            "sProcessing": "处理中...",
+            "sLengthMenu": "显示 _MENU_ 项结果",
+            "sZeroRecords": "没有匹配结果",
+            "sInfo": "共 _TOTAL_ 项",
+            "sInfoEmpty": "共 0 项",
+            "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+            "sInfoPostFix": "",
+            "sSearch": "搜索:",
+            "sUrl": "",
+            "sEmptyTable": "表中数据为空",
+            "sLoadingRecords": "载入中...",
+            "sInfoThousands": ",",
+            "oPaginate": {
+              "sFirst": "首页",
+              "sPrevious": "上页",
+              "sNext": "下页",
+              "sLast": "末页"
+            },
+            "oAria": {
+              "sSortAscending": ": 以升序排列此列",
+              "sSortDescending": ": 以降序排列此列"
             }
-          }
-          //部分备注信息
-          function getPartialRemarksHtml(remarks){
-            return remarks.substr(0,remarkShowLength) + '&nbsp;&nbsp;<a href="javascript:void(0);" ><b>...</b></a>';
-          }
-
-          //全部备注信息
-          function getTotalRemarksHtml(remarks){
-            return remarks + '&nbsp;&nbsp;<a href="javascript:void(0);" >收起</a>';
-          }
-        }
+          },
+          data:objData,
+          columns:[
+            {"data":"userName"},
+            // { "data":"tableName"},
+            { "data":"tableNameChina"},
+            { "data":"dataName"},
+            { "data":"userAction"},
+            { "data":"updateTime"},
+            { "data":"dataGxChina"}
+          ]
+        });
+      }
         /* 第二步：对选中列表进行操作 */
         var selTable = $("#adm-user").on("click","tr",function(){
             if($(this).hasClass("selected")){
@@ -295,7 +341,7 @@
                     type:"GET",
                     contentType:"application/json;charset=UTF-8",
                     success:function (result) {
-                        huidiao(result);
+                        huidiaoOne(result);
                         console.log(result);
                     }
                 });
