@@ -289,21 +289,7 @@
             { "data":"updateTime"},
             { "data":"dataGxChina"}
           ],
-            "columnDefs" : [
-                {
-                    "type": "date",
-                    "targets": 6,
-                    "render": function (objData, type, full, meta) {
-                        if(full.dataGxChina){
-                            if (full.dataGxChina.length > remarkShowLength) {
-                                return getPartialRemarksHtml(full.dataGxChina);
-                            }else{
-                                return full.dataGxChina;
-                            }
-                        }
-
-                    }
-                },{
+            "columnDefs" : [{
                     "targets": 0,
                     "name": "状态",
                     "cellType": "th",
