@@ -158,11 +158,11 @@
 //                console.log( cellData.openAndclose);
                 if ( cellData.openAndclose == 'open' ) {
                     tabShowText = '已开启';
-                    $(td).context.innerHTML="<button style='color: white;border:none;border-radius: 5px;background-color: #36cb91;line-height: 30px;text-align: center;width: 100px;font-size: 14px;'>"+ tabShowText +"</button>";
+                    $(td).context.innerHTML="<button style='color: white;border:none;border-radius: 5px;background-color: #36cb91;line-height: 30px;text-align: center;width: 50px;font-size: 14px;'>"+ tabShowText +"</button>";
 
                 }else{
                     tabShowText = '已关闭';
-                    $(td).context.innerHTML="<button style='color: white;border:none;border-radius: 5px;background-color: #ff4949;line-height: 30px;text-align: center;width: 100px;font-size: 14px;'>"+ tabShowText +"</button>";
+                    $(td).context.innerHTML="<button style='color: white;border:none;border-radius: 5px;background-color: #ff4949;line-height: 30px;text-align: center;width: 50px;font-size: 14px;'>"+ tabShowText +"</button>";
 
                 }
             }
@@ -221,7 +221,6 @@
             table.$('tr.selected').removeClass('selected');
             $(this).addClass('selected');
         }//end if 
-
     } );//end 外圈 $('#example tbody').on
 
     //步骤3，删除按钮单击事件
@@ -414,13 +413,13 @@
                         <tr>
                             <th style="min-width: 80px;">姓名</th>
                             <th style="min-width: 80px;">负责人</th>
-                            <th style="min-width: 70px;">渠道等级</th>
-                            <th style="min-width: 70px;">佣金比例</th>
+                            <th style="min-width: 100px;">渠道等级</th>
+                            <th style="min-width: 100px;">佣金比例</th>
                             <th style="min-width: 80px;">单位</th>
                             <th style="min-width: 80px;">职位</th>
                             <th style="min-width: 80px;">手机号</th>
-                            <th style="min-width: 190px;">创建时间</th>
-                            <th style="min-width: 190px;">最近更新时间</th>
+                            <th style="min-width: 185px;">创建时间</th>
+                            <th style="min-width: 185px;">最近更新时间</th>
                             <th>状态</th>
                         </tr>
                         </thead>
@@ -430,13 +429,13 @@
                         <tr>
                             <th>姓名</th>
                             <th>负责人</th>
-                            <th style="min-width: 70px;">渠道等级</th>
-                            <th style="min-width: 70px;">佣金比例</th>
+                            <th style="min-width: 100px;">渠道等级</th>
+                            <th style="min-width: 100px;">佣金比例</th>
                             <th style="min-width: 80px;">单位</th>
                             <th style="min-width: 80px;">职位</th>
                             <th style="min-width: 80px;">手机号</th>
-                            <th style="min-width: 190px;">创建时间</th>
-                            <th style="min-width: 190px;">最近更新时间</th>
+                            <th style="min-width: 185px;">创建时间</th>
+                            <th style="min-width: 185px;">最近更新时间</th>
                             <th>状态</th>
                         </tr>
                         </tfoot>
